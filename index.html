@@ -182,6 +182,24 @@ html{-webkit-text-size-adjust:100%}
  -webkit-mask-image:radial-gradient(ellipse 80% 83% at 50% 52%,#000 72%,rgba(0,0,0,.8) 86%,transparent 100%)!important;
  mask-image:radial-gradient(ellipse 80% 83% at 50% 52%,#000 72%,rgba(0,0,0,.8) 86%,transparent 100%)!important;
 }
+</style><style id="royal-elephants-peacocks-3d-nov05">
+.stage .lamp,.stage .lamp.left,.stage .lamp.right{
+  background-color:transparent!important;
+  mix-blend-mode:normal!important;
+  background-blend-mode:normal!important;
+  filter:drop-shadow(0 2px 1px rgba(255,223,150,.6)) drop-shadow(0 8px 3px rgba(50,6,20,.6)) drop-shadow(0 18px 13px rgba(14,0,9,.82)) saturate(1.24) contrast(1.13)!important;
+  transform-style:preserve-3d!important;
+  perspective:1100px!important;
+  will-change:transform;
+}
+.stage .lamp.left{transform:perspective(1100px) scaleX(-1) rotateY(-4deg)!important}
+.stage .lamp.right{transform:perspective(1100px) rotateY(4deg)!important}
+@media(prefers-reduced-motion:no-preference){
+ .stage .lamp.left{animation:royalLeft3d 7s ease-in-out infinite alternate!important}
+ .stage .lamp.right{animation:royalRight3d 7s ease-in-out infinite alternate!important}
+}
+@keyframes royalLeft3d{from{transform:perspective(1100px) scaleX(-1) rotateY(-4deg) translateY(0)}to{transform:perspective(1100px) scaleX(-1) rotateY(3deg) translateY(-5px)}}
+@keyframes royalRight3d{from{transform:perspective(1100px) rotateY(4deg) translateY(0)}to{transform:perspective(1100px) rotateY(-3deg) translateY(-5px)}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="lamp left" role="img" aria-label="Royal elephant and peacock"></div><div class="lamp right" role="img" aria-label="Royal elephant and peacock"></div><div class="stars" id="stars"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="nav-hint">Tap the arrows to change invitation pages</div><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script>
 const pages=[
 {label:'WEDDING INVITATION',head:'THE WEDDING OF',date:'Sunday, 29th November 2026',info:'With the grace of God and blessings of both families, we invite you to celebrate with us.',venue:'',foot:'YOUR PRESENCE IS OUR GREATEST BLESSING'},
