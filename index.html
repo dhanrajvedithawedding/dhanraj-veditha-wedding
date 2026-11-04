@@ -61,6 +61,18 @@ html,body{background:var(--invitation-burgundy-deep)!important}
 .stage .lamp.left{left:0!important;transform:scaleX(-1)}
 .stage .lamp.right{right:0!important;transform:none}
 @media(max-width:500px){.stage .lamp{bottom:11%!important;width:25%!important;height:15%!important}}
+</style><style id="premium-3d-ganapati-elephants">
+/* Shared decorative layer across all invitation scenes */
+.stage .lamp{position:absolute!important;bottom:8%!important;width:clamp(100px,24vw,240px)!important;height:clamp(145px,27vh,275px)!important;opacity:1!important;background-size:contain!important;background-position:center bottom!important;background-repeat:no-repeat!important;mix-blend-mode:multiply!important;filter:contrast(1.13) saturate(1.19) drop-shadow(0 18px 13px rgba(10,0,7,.66))!important;transform-style:preserve-3d;transform-origin:center bottom;z-index:3;pointer-events:none;animation:elephantBreath 8s ease-in-out infinite alternate}
+.stage .lamp.left{left:0!important;transform:perspective(800px) rotateY(13deg) scaleX(-1);animation-name:elephantBreathLeft}
+.stage .lamp.right{right:0!important;transform:perspective(800px) rotateY(-13deg);animation-delay:-4s}
+@keyframes elephantBreath{from{transform:perspective(800px) rotateY(-13deg) translateY(0)}to{transform:perspective(800px) rotateY(-9deg) translateY(-5px)}}
+@keyframes elephantBreathLeft{from{transform:perspective(800px) rotateY(13deg) scaleX(-1) translateY(0)}to{transform:perspective(800px) rotateY(9deg) scaleX(-1) translateY(-5px)}}
+#card .symbol{position:relative!important;display:flex!important;justify-content:center!important;align-items:center!important;perspective:850px;isolation:auto!important}
+#card .ganapati-art{width:clamp(90px,20vw,185px)!important;max-height:clamp(100px,21vh,205px)!important;object-fit:contain!important;mix-blend-mode:multiply!important;filter:contrast(1.14) saturate(1.22) drop-shadow(0 12px 12px rgba(20,2,11,.6))!important;transform:rotateY(-5deg) translateZ(10px);animation:ganapatiFloat 7s ease-in-out infinite alternate}
+@keyframes ganapatiFloat{from{transform:rotateY(-5deg) translateY(0) scale(1)}to{transform:rotateY(5deg) translateY(-5px) scale(1.015)}}
+@media(max-width:600px){.stage .lamp{width:26vw!important;height:20vh!important;bottom:7%!important}#card .ganapati-art{width:clamp(75px,22vw,125px)!important;max-height:15vh!important}}
+@media(prefers-reduced-motion:reduce){.stage .lamp,#card .ganapati-art{animation:none!important}}
 </style></head><body><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="lamp left" role="img" aria-label="Royal elephant and peacock"></div><div class="lamp right" role="img" aria-label="Royal elephant and peacock"></div><div class="stars" id="stars"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="nav-hint">Tap the arrows to change invitation pages</div><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script>
 const pages=[
 {label:'WEDDING INVITATION',head:'THE WEDDING OF',date:'Sunday, 29th November 2026',info:'With the grace of God and blessings of both families, we invite you to celebrate with us.',venue:'',foot:'YOUR PRESENCE IS OUR GREATEST BLESSING'},
