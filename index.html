@@ -113,6 +113,31 @@ html,body{background:var(--invitation-burgundy-deep)!important}
 .stage .lamp.left{transform:scaleX(-1)!important;animation:none!important}
 .stage .lamp.right{transform:none!important;animation:none!important}
 @media(max-width:600px){.stage .lamp{width:27vw!important;height:22vh!important;bottom:7%!important}}
+</style><style id="uhd-premium-3d-gold-typography">
+/* Device-resolution-independent raised gold lettering; no rasterized text. */
+html{-webkit-text-size-adjust:100%}
+#card,.brand,.nav-hint{transform-style:preserve-3d}
+#card :is(.eyebrow,.names,.ornament,.date,.info,.venue,.reception-focus,.foot),
+.stage :is(.brand,.nav-hint){
+  -webkit-font-smoothing:antialiased!important;
+  text-rendering:geometricPrecision!important;
+  -webkit-text-stroke:.35px rgba(255,238,188,.52)!important;
+  text-shadow:0 -1px 0 #fff5d2,0 1px 0 #f8db9d,0 2px 0 #d9a456,0 3px 0 #9c5d2b,0 4px 1px #6b341e,0 5px 2px #3d1420,0 9px 8px rgba(12,0,8,.67),0 0 14px rgba(255,202,114,.20)!important;
+  backface-visibility:hidden;
+}
+#card .names{
+  -webkit-text-stroke:.55px rgba(255,248,211,.66)!important;
+  text-shadow:0 -2px 0 #fff8e1,0 1px 0 #ffecc0,0 2px 0 #f5d28a,0 3px 0 #d5a05a,0 4px 0 #a96c36,0 5px 0 #79411f,0 6px 2px #4c2118,0 10px 9px #19040d,0 0 18px #ffc66d77!important;
+}
+#card .venue .venue-map-link{filter:drop-shadow(0 3px 3px #1b030c)!important}
+@media(min-width:1600px){
+ #card .names{text-shadow:0 -2px 0 #fff8e1,0 2px 0 #ffecc0,0 4px 0 #f5d28a,0 6px 0 #d5a05a,0 8px 0 #a96c36,0 10px 0 #79411f,0 12px 3px #4c2118,0 20px 18px #19040d,0 0 30px #ffc66d77!important}
+ #card :is(.eyebrow,.date,.info,.venue,.reception-focus,.foot){text-shadow:0 -1px 0 #fff6d5,0 2px 0 #f1c57d,0 4px 0 #a76c36,0 6px 2px #5a281a,0 11px 10px #16030d!important}
+}
+@media(max-width:600px){
+ #card :is(.eyebrow,.date,.info,.venue,.reception-focus,.foot){-webkit-text-stroke:.2px #ffefbf88!important;text-shadow:0 -1px 0 #fff5d0,0 1px 0 #e5b976,0 2px 0 #8c522c,0 4px 3px #260a16!important}
+ #card .names{text-shadow:0 -1px 0 #fff8dc,0 1px 0 #ffe9b7,0 2px 0 #c58c45,0 3px 0 #7a4027,0 6px 5px #1c0410,0 0 12px #ffcb7a55!important}
+}
 </style></head><body><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="lamp left" role="img" aria-label="Royal elephant and peacock"></div><div class="lamp right" role="img" aria-label="Royal elephant and peacock"></div><div class="stars" id="stars"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="nav-hint">Tap the arrows to change invitation pages</div><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script>
 const pages=[
 {label:'WEDDING INVITATION',head:'THE WEDDING OF',date:'Sunday, 29th November 2026',info:'With the grace of God and blessings of both families, we invite you to celebrate with us.',venue:'',foot:'YOUR PRESENCE IS OUR GREATEST BLESSING'},
