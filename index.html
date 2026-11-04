@@ -200,6 +200,36 @@ html{-webkit-text-size-adjust:100%}
 }
 @keyframes royalLeft3d{from{transform:perspective(1100px) scaleX(-1) rotateY(-4deg) translateY(0)}to{transform:perspective(1100px) scaleX(-1) rotateY(3deg) translateY(-5px)}}
 @keyframes royalRight3d{from{transform:perspective(1100px) rotateY(4deg) translateY(0)}to{transform:perspective(1100px) rotateY(-3deg) translateY(-5px)}}
+</style><style id="elephant-peacock-foreground-3d-20261105">
+/* Lift both transparent elephant-and-peacock illustrations in front of the architecture. */
+.stage .lamp,.stage .lamp.left,.stage .lamp.right{
+ position:absolute!important;
+ z-index:35!important;
+ display:block!important;
+ visibility:visible!important;
+ opacity:1!important;
+ bottom:6.5%!important;
+ width:clamp(118px,30%,255px)!important;
+ height:clamp(175px,33%,350px)!important;
+ background-color:transparent!important;
+ background-size:contain!important;
+ background-repeat:no-repeat!important;
+ background-position:center bottom!important;
+ mix-blend-mode:normal!important;
+ background-blend-mode:normal!important;
+ -webkit-mask-image:none!important;
+ mask-image:none!important;
+ filter:drop-shadow(0 3px 1px rgba(255,215,135,.50)) drop-shadow(0 12px 7px rgba(22,2,12,.85)) drop-shadow(0 20px 19px rgba(9,0,8,.65))!important;
+ transform-origin:center bottom!important;
+ animation:elephantForegroundFloat 6s ease-in-out infinite alternate!important;
+ pointer-events:none!important;
+}
+.stage .lamp.left{left:-2%!important;right:auto!important;animation-name:elephantForegroundLeft!important;transform:scaleX(-1)!important}
+.stage .lamp.right{right:-2%!important;left:auto!important}
+@keyframes elephantForegroundFloat{from{transform:perspective(1100px) translateY(0) rotateY(-4deg) scale(1)}to{transform:perspective(1100px) translateY(-5px) rotateY(4deg) scale(1.035)}}
+@keyframes elephantForegroundLeft{from{transform:perspective(1100px) scaleX(-1) translateY(0) rotateY(-4deg)}to{transform:perspective(1100px) scaleX(-1) translateY(-5px) rotateY(4deg) scale(1.035)}}
+@media(max-width:600px){.stage .lamp,.stage .lamp.left,.stage .lamp.right{width:31%!important;height:27%!important;bottom:8%!important}.stage .lamp.left{left:-3%!important}.stage .lamp.right{right:-3%!important}}
+@media(prefers-reduced-motion:reduce){.stage .lamp,.stage .lamp.left,.stage .lamp.right{animation:none!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="lamp left" role="img" aria-label="Royal elephant and peacock"></div><div class="lamp right" role="img" aria-label="Royal elephant and peacock"></div><div class="stars" id="stars"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="nav-hint">Tap the arrows to change invitation pages</div><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script>
 const pages=[
 {label:'WEDDING INVITATION',head:'THE WEDDING OF',date:'Sunday, 29th November 2026',info:'With the grace of God and blessings of both families, we invite you to celebrate with us.',venue:'',foot:'YOUR PRESENCE IS OUR GREATEST BLESSING'},
