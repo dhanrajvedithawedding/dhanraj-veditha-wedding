@@ -7,6 +7,26 @@
 
 /* Ornate five-page royal invitation */
 .hero,.event{scroll-margin-top:65px;background-image:radial-gradient(ellipse at 50% 30%,#751d2e 0%,#3d081a 52%,#1b0510 100%)}.hero .frame,.event .frame{border:double 7px #d9ad66;border-radius:150px 150px 8px 8px/90px 90px 8px 8px;box-shadow:0 0 0 2px #f2d59c,0 0 0 11px #8d4e2a,0 0 0 14px #e4bb73,0 20px 110px #000b,inset 0 0 70px #b7742a35}.hero .frame:before,.event .frame:before{content:'❧ ✦ ❧';font-size:28px;top:14px}.hero .frame:after,.event .frame:after{content:'❦';font-size:27px}.hero,.event{border-bottom:5px solid #b57a3f}.hero .frame,.event .frame{min-height:65vh;display:flex;flex-direction:column;align-items:center;justify-content:center}.hero .eyebrow,.event .eyebrow{color:#f7d79c}.event .section-title{font-family:'Great Vibes',cursive;letter-spacing:0;text-transform:none;font-size:clamp(57px,9vw,95px);font-weight:400}.hero .names{font-size:clamp(75px,12vw,135px)}.event .details{font-family:Georgia,serif;font-style:italic;font-size:clamp(15px,2vw,20px);color:#f5d8a2}.event .date{font-family:Georgia,serif;font-style:italic;font-size:clamp(18px,2.5vw,26px);color:#f9dba0}.event .palace,.hero .palace{opacity:.85}.event .side,.hero .side{filter:drop-shadow(0 0 10px #f0c17d)}.frame .ornament{font-size:23px}.event .invitation{max-width:570px}.hero .button{border:2px solid #f2cb85;box-shadow:0 0 22px #c9934855}.frame{z-index:2}.hero:after,.event:after{z-index:1}@media(max-width:700px){.hero .frame,.event .frame{border-width:4px;border-radius:90px 90px 5px 5px/55px 55px 5px 5px;box-shadow:0 0 0 1px #f2d59c,0 0 0 5px #8d4e2a,0 0 0 7px #e4bb73,0 20px 60px #000a}.hero .frame,.event .frame{min-height:67vh}.hero .names{font-size:76px}.event .section-title{font-size:61px}.event .side,.hero .side{opacity:.35}} 
+
+/* Vivid royal wedding art direction */
+:root{--gold:#ffdf93;--dark:#160316;--wine:#721344;--cream:#fff4d9}
+body{background:#190315}
+.hero,.event{background:radial-gradient(ellipse at 50% 10%,#d17468 0%,#951b56 28%,#510c39 59%,#170317 100%)!important}
+.event:nth-of-type(even){background:radial-gradient(ellipse at 50% 10%,#d68e55 0%,#9b2954 28%,#510c43 60%,#18051a 100%)!important}
+.hero:before,.event:before{height:32vh;background:repeating-radial-gradient(ellipse at 50% -160%,transparent 0 19px,#ffcf7b99 20px 23px,transparent 25px 47px)!important}
+.stars{opacity:.75;background-image:radial-gradient(circle,#fff5d0 1.5px,transparent 2px),radial-gradient(circle,#ffd278 1px,transparent 2px);background-size:71px 83px,137px 153px}
+.glow{background:radial-gradient(circle,#ffcb7c66,transparent 70%)}
+.frame,.hero .frame,.event .frame{background:linear-gradient(155deg,#7a174adf,#4b0a36ed 58%,#26051fe9)!important;border:5px double #ffe0a0!important;outline:2px solid #ffbf70!important;outline-offset:8px!important;box-shadow:0 0 0 14px #9f552c77,0 0 60px #f9ba6977,0 35px 100px #10000dbb,inset 0 0 75px #ffb66622!important}
+.names,.section-title{color:#ffe2a3!important;text-shadow:0 2px 0 #9e5c2e,0 5px 22px #ffca76aa,0 0 45px #ffcc6b66!important}
+.palace{opacity:1!important;filter:drop-shadow(0 0 24px #ffc57488)}
+.ornament{color:#ffe4a7}.ornament:before,.ornament:after{background:linear-gradient(90deg,transparent,#ffe0a0)}
+.eyebrow,.date,.details{color:#ffebc4!important}
+.button{background:linear-gradient(125deg,#f6c879,#fff1bf,#cf913c)!important;color:#4a1032!important;border:1px solid #fff1c0!important;font-weight:600;box-shadow:0 7px 25px #f4bb6577!important}
+.button:hover{filter:brightness(1.12);transform:translateY(-3px)}
+nav{background:#310d31e8;border-bottom:1px solid #ffca7c99}nav .brand{color:#ffe1a5}
+.side{opacity:.9!important;text-shadow:0 0 25px #ffcc75}
+.event .frame{max-width:790px}
+@media(max-width:700px){.frame,.hero .frame,.event .frame{outline-offset:4px!important;box-shadow:0 0 0 7px #9f552c77,0 0 35px #f9ba6955,0 20px 65px #10000dbb!important}}
 </style></head><body>
 <nav><div class="brand">D ✦ V</div><div class="links"><a href="#home">HOME</a><a href="#sangeet">SANGEET</a><a href="#mehndi">MEHNDI</a><a href="#wedding">WEDDING</a><a href="#reception">RECEPTION</a></div></nav>
 <template id="palace"><div class="palace"><svg viewBox="0 0 1100 500" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><defs><linearGradient id="g" x2="0" y2="1"><stop stop-color="#f9d69a"/><stop offset="1" stop-color="#8e4d37"/></linearGradient></defs><g fill="url(#g)" stroke="#f6d39a" stroke-width="3"><path d="M0 480V275h120v-60h70v-75h45v-35h20v35h45v75h70v60h90v-70h45v-65h35v-45h20V60h20v35h20v45h35v65h45v70h90v-60h70v-75h45v-35h20v35h45v75h70v60h120v205z"/><path d="M425 480V230h250v250z"/><path d="M470 230q80-135 160 0z"/><path d="M505 135q45-80 90 0z"/><path d="M525 85q25-50 50 0z"/></g><g fill="#481a29" stroke="#d9a66e" stroke-width="4"><path d="M510 480V365q40-90 80 0v115z"/><path d="M140 480V365q40-90 80 0v115z"/><path d="M880 480V365q40-90 80 0v115z"/><path d="M315 480V390q30-60 60 0v90z"/><path d="M725 480V390q30-60 60 0v90z"/></g><g fill="#ffdf9c"><circle cx="550" cy="35" r="8"/><circle cx="245" cy="88" r="7"/><circle cx="855" cy="88" r="7"/></g></svg></div></template>
