@@ -63,13 +63,13 @@ let current=0,busy=false;const card=document.getElementById('card'),label=docume
 (function(){
 const destinations={
 'SANGEET':'Amrith Garden Ambagilu, Udupi, Karnataka',
-'MEHNDI':'Shree Kateel Petemane, Padubidri, Udupi, Karnataka',
+'MEHNDI':'https://maps.google.com/?q=13.127714,74.772118',
 'WEDDING':'Shree Gopalakrishna Sabha Bhavana, Kateel, Karnataka',
 'RECEPTION':'Ambarai Garden Lawns, Dharwad, Karnataka'
 };
 const weddingReception='Mulki Sunder Ram Shetty Convention Centre, Mulki, Karnataka';
 const pin='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>';
-const makeLink=(place)=>{const a=document.createElement('a');a.className='venue-map-link';a.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place);a.target='_blank';a.rel='noopener noreferrer';a.setAttribute('aria-label','Open '+place+' in Google Maps');a.title='Open venue in Google Maps';a.innerHTML=pin;return a};
+const makeLink=(place)=>{const a=document.createElement('a');a.className='venue-map-link';a.href=place.startsWith('https://')?place:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place);a.target='_blank';a.rel='noopener noreferrer';a.setAttribute('aria-label','Open '+place+' in Google Maps');a.title='Open venue in Google Maps';a.innerHTML=pin;return a};
 function attach(){
 const key=(document.getElementById('sceneLabel')?.textContent||'').trim();
 const venue=document.querySelector('#card > .venue');
