@@ -1539,6 +1539,45 @@ html body #card[data-tone="5"].celebrate-reveal .celebrate-final-title span:nth-
 #celebrateTextSparkCanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:117;display:none}
 body.celebrate-text-sparks #celebrateTextSparkCanvas{display:block}
 @media(prefers-reduced-motion:reduce){#celebrateTextSparkCanvas{display:none!important}}
+</style><style id="all-invitations-cinematic-motion-v62">
+/* Give every invitation the same graceful reveal and ongoing motion as the opening page. */
+@keyframes allPagesSoftReveal{
+ 0%{opacity:0;filter:blur(5px) brightness(1.5)}
+ 35%{opacity:.72;filter:blur(1.5px) brightness(1.12)}
+ 100%{opacity:1;filter:blur(0) brightness(1)}
+}
+@keyframes allPagesImageBreath{
+ 0%,100%{transform:translate3d(0,0,0) scale(1)}
+ 50%{transform:translate3d(0,-3px,0) scale(1.015)}
+}
+html body #card[data-tone] > :is(.symbol,.eyebrow,.names,.ornament,.date,.info,.venue,.reception-focus,.wedding-blessing-plaque,.foot,.opening-couple){
+ animation-name:invitationTextDrift,allPagesSoftReveal!important;
+ animation-duration:12s,1.25s!important;
+ animation-timing-function:ease-in-out,ease-out!important;
+ animation-iteration-count:infinite,1!important;
+ animation-fill-mode:none,both!important;
+ animation-delay:0s,0s!important;
+}
+html body #card[data-tone] > .names{animation-duration:15s,1.3s!important;animation-delay:-3s,.12s!important}
+html body #card[data-tone] > .ornament{animation-delay:-1s,.22s!important}
+html body #card[data-tone] > .date{animation-delay:-2s,.3s!important}
+html body #card[data-tone] > .info{animation-duration:17s,1.25s!important;animation-delay:-6s,.4s!important}
+html body #card[data-tone] > .venue{animation-duration:17s,1.25s!important;animation-delay:-6s,.5s!important}
+html body #card[data-tone] > .reception-focus{animation-duration:17s,1.25s!important;animation-delay:-6s,.55s!important}
+html body #card[data-tone] > .foot{animation-delay:-4s,.6s!important}
+html body #card[data-tone] > .symbol img.ganapati-art{
+ animation:allPagesImageBreath 5.5s ease-in-out infinite!important;
+ transform-origin:center center!important;
+}
+html body #card[data-tone] > .opening-couple img{
+ animation:allPagesImageBreath 5.5s ease-in-out infinite!important;
+ transform-origin:center center!important;
+}
+@media(prefers-reduced-motion:reduce){
+ html body #card[data-tone] > :is(.symbol,.eyebrow,.names,.ornament,.date,.info,.venue,.reception-focus,.wedding-blessing-plaque,.foot,.opening-couple),
+ html body #card[data-tone] > .symbol img.ganapati-art,
+ html body #card[data-tone] > .opening-couple img{animation:none!important}
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
