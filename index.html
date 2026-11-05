@@ -1963,7 +1963,75 @@ border:2px solid #bb7419!important;border-radius:999px!important;
 box-shadow:0 0 0 2px #ffe8a5,inset 0 2px 5px #fff7db,inset 0 -3px 5px #aa6016,0 4px 9px #79400c55!important;
 text-shadow:none!important;
 }
-</style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
+</style><style id="gold-star-drops-and-map-bubbles-v1">
+/* Decorative dot under each letter becomes a golden star. */
+html body #card .letter-bubble-heading .heading-letter::after{
+content:"✦"!important;display:block!important;
+position:absolute!important;top:calc(100% + 3px)!important;left:50%!important;
+transform:translateX(-50%)!important;width:auto!important;height:auto!important;
+border:0!important;border-radius:0!important;background:none!important;
+box-shadow:none!important;color:#d08b1c!important;-webkit-text-fill-color:#d08b1c!important;
+font:700 clamp(8px,1.5vw,13px)/1 Georgia,serif!important;
+text-shadow:0 0 3px #ffe8a1,0 1px 2px #a36110!important;
+opacity:1!important;
+}
+/* Gold water-glass location button with black pin icon. */
+html body #card .venue-map-link{
+background:radial-gradient(ellipse at 30% 16%,#fff9df,transparent 48%),linear-gradient(145deg,#fff1b4,#e8b657 48%,#c88b27 76%,#f9dc91)!important;
+background-color:#e7b65c!important;
+border:1.5px solid #f8de9d!important;
+box-shadow:inset 0 2px 6px #fffce4,inset 0 -4px 8px #99601588,0 3px 10px #8a521b66!important;
+color:#17110b!important;-webkit-text-fill-color:#17110b!important;
+}
+html body #card .venue-map-link::before,
+html body #card .venue-map-link::after{display:none!important;content:none!important}
+html body #card .venue-map-link svg,
+html body #card .venue-map-link svg *{color:#17110b!important;stroke:#17110b!important;fill:none!important}
+@keyframes headingGoldStarFall{
+0%{transform:translate3d(-50%,0,0) rotate(0deg);opacity:1}
+10%{opacity:1}
+90%{opacity:.9}
+100%{transform:translate3d(calc(-50% + var(--star-drift,0px)),var(--star-drop,65vh),0) rotate(150deg);opacity:0}
+}
+html body .heading-falling-star{
+position:fixed!important;z-index:10005!important;pointer-events:none!important;
+color:#df9b26!important;-webkit-text-fill-color:#df9b26!important;
+text-shadow:0 0 5px #fff0b6,0 0 10px #dca43c!important;
+font:700 13px/1 Georgia,serif!important;
+animation:headingGoldStarFall 8s ease-in forwards!important;
+}
+@media(prefers-reduced-motion:reduce){html body .heading-falling-star{display:none!important}}
+</style>
+<script id="heading-gold-star-fall-script-v1">
+(function(){
+let timer=null,active=0;
+function prepare(){
+ clearTimeout(timer);
+ document.querySelectorAll('.heading-falling-star').forEach(e=>e.remove());
+ const card=document.getElementById('card');
+ const letters=card?.querySelectorAll('.letter-bubble-heading .heading-letter');
+ if(!letters||!letters.length)return;
+ const ticket=++active;
+ timer=setTimeout(()=>{
+  if(ticket!==active||!card.isConnected)return;
+  letters.forEach((letter,i)=>{
+   if(!letter.isConnected)return;
+   const rect=letter.getBoundingClientRect();
+   const star=document.createElement('span');
+   star.className='heading-falling-star';star.textContent='✦';star.setAttribute('aria-hidden','true');
+   star.style.left=(rect.left+rect.width/2)+'px';
+   star.style.top=(rect.bottom+3)+'px';
+   star.style.setProperty('--star-drop',Math.max(130,window.innerHeight-rect.bottom+30)+'px');
+   star.style.setProperty('--star-drift',((i%5)-2)*13+'px');
+   document.body.appendChild(star);
+   star.addEventListener('animationend',()=>star.remove(),{once:true});
+  });
+ },3000);
+}
+const card=document.getElementById('card');
+if(card){new MutationObserver(()=>{clearTimeout(timer);active++;setTimeout(prepare,60)}).observe(card,{childList:true});setTimeout(prepare,300)}
+})();
+</script></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
   {label:'BLESSINGS',icon:'✿',accent:'❦'},
