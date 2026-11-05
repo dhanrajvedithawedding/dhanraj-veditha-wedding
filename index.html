@@ -1015,6 +1015,9 @@ html body #card[data-tone="0"] .couple-edge-sparkles{position:absolute;inset:0;p
 html body #card[data-tone="0"] .couple-gold-flake{position:absolute;font-style:normal;font-size:clamp(5px,.85vw,9px);line-height:1;color:#ffda83;text-shadow:0 0 5px #ffe3a0,0 0 9px #e4a548;transform:translate(-50%,-50%);animation:coupleGoldTwinkle 3.6s ease-in-out var(--d) infinite}
 @keyframes coupleGoldTwinkle{0%,100%{opacity:.08;transform:translate(-50%,-50%) scale(.35)}45%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}65%{opacity:.45;transform:translate(-50%,-60%) scale(.7)}}
 @media(prefers-reduced-motion:reduce){html body #card[data-tone="0"] .couple-gold-flake{animation:none!important;opacity:.7}}
+</style><style id="couple-refined-cutout-v29">
+html body #card[data-tone="0"] .opening-couple img{image-rendering:auto!important;transform:translateZ(0);backface-visibility:hidden;filter:contrast(1.055) saturate(1.1)!important}
+html body #card[data-tone="0"] .opening-couple{filter:drop-shadow(0 0 1px #ffe3a0) drop-shadow(0 0 3px #f9c36b) drop-shadow(0 0 10px rgba(245,186,91,.48))!important}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -1223,6 +1226,29 @@ return new Promise(resolve=>{
    // highlights remain untouched.
    if(comp.length>=24&&(touch||comp.length>=120))for(const j of comp)seen[j]=1;
   }
+  // Remove leftover bright background in the central opening between
+  // the two figures, including near-white pixels disconnected by compression.
+  // Keep pale fabric details outside that narrow gap.
+  const gapMask=new Uint8Array(w*h),gapQueue=[];
+  function gapBackground(i){
+   const k=i*4,r=p[k],g=p[k+1],b=p[k+2];
+   return r>174&&g>174&&b>171&&Math.max(r,g,b)-Math.min(r,g,b)<55;
+  }
+  function gapSeed(i){if(!gapMask[i]&&gapBackground(i)){gapMask[i]=1;gapQueue.push(i)}}
+  for(let y=Math.floor(h*.28);y<Math.floor(h*.89);y++){
+   for(let x=Math.floor(w*.37);x<Math.floor(w*.71);x++){
+    const i=y*w+x;
+    if(seen[i]&&gapBackground(i))gapSeed(i);
+   }
+  }
+  while(gapQueue.length){
+   const i=gapQueue.pop(),x=i%w,y=Math.floor(i/w);
+   if(x>Math.floor(w*.35))gapSeed(i-1);
+   if(x<Math.floor(w*.73))gapSeed(i+1);
+   if(y>Math.floor(h*.25))gapSeed(i-w);
+   if(y<Math.floor(h*.91))gapSeed(i+w);
+  }
+  for(let i=0;i<w*h;i++)if(gapMask[i])seen[i]=1;
   for(let i=0;i<w*h;i++)if(seen[i])p[i*4+3]=0;
   // Decontaminate white antialias fringe for a clean gold-edged silhouette.
   for(let i=0;i<w*h;i++){
