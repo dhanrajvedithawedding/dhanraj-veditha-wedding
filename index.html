@@ -766,6 +766,25 @@ html body #card .heading-gap{width:8px}
 @keyframes headingBubbleRise{0%{transform:translate3d(0,0,0) scale(.55);opacity:0}12%{opacity:.95}55%{opacity:.75}100%{transform:translate3d(var(--drift),-190px,0) scale(1.25);opacity:0}}
 @media(max-width:700px){html body #card .heading-letter{width:clamp(18px,5vw,24px);height:clamp(18px,5vw,24px);font-size:clamp(11px,3vw,14px)}}
 @media(prefers-reduced-motion:reduce){html body #card .heading-letter{animation:none!important}#headingBubbleFlight{display:none!important}}
+</style><style id="balanced-line-spacing-letter-bubbles-v17">
+/* Slightly tighten text rhythm, keeping comfortable space between sections. */
+html body #card{gap:clamp(3px,.58vh,8px)!important;justify-content:space-evenly!important}
+html body #card > .names{line-height:1.08!important;margin-block:2px!important}
+html body #card > .date{line-height:1.22!important;margin-block:3px!important}
+html body #card > .info{line-height:1.25!important;margin-block:3px!important}
+html body #card > .venue{line-height:1.25!important;margin-block:3px!important}
+html body #card .wedding-muhurtham{line-height:1.27!important;margin-top:5px!important}
+html body #card .reception-focus{line-height:1.26!important;margin-block:5px!important;padding-block:8px!important}
+html body #card .reception-focus .venue{line-height:1.25!important;margin-top:3px!important}
+html body #card > .foot{line-height:1.22!important;margin-block:4px 7px!important}
+html body #card[data-tone="4"]{gap:clamp(5px,.9vh,11px)!important;justify-content:space-evenly!important}
+html body #card .eyebrow.letter-bubble-heading{gap:clamp(2px,.45vw,4px)!important;margin-block:3px!important}
+@media(max-width:700px){html body #card{gap:clamp(3px,.5vh,6px)!important}html body #card > .date,html body #card > .info,html body #card > .venue{margin-block:2px!important}html body #card .reception-focus{padding-block:6px!important;margin-block:4px!important}html body #card[data-tone="4"]{gap:clamp(4px,.8vh,9px)!important}}
+/* Small luminous bubbles visibly travel upward through each heading letter. */
+html body #card .heading-letter{overflow:visible!important;isolation:isolate!important}
+html body #card .heading-letter::before{content:'';position:absolute;z-index:2;left:50%;top:65%;width:30%;height:30%;border-radius:50%;border:1px solid rgba(255,248,208,.85);background:radial-gradient(circle at 30% 25%,#fffbe5,rgba(250,211,137,.55) 52%,transparent);box-shadow:0 0 6px #fce6a7;pointer-events:none;animation:letterBubblePass 3.7s ease-in-out calc(var(--i)*160ms) infinite!important}
+@keyframes letterBubblePass{0%{transform:translate(-50%,12px) scale(.35);opacity:0}15%{opacity:.95}55%{transform:translate(-50%,-7px) scale(1.05);opacity:.95}90%{transform:translate(-50%,-25px) scale(.8);opacity:.45}100%{transform:translate(-50%,-31px) scale(.45);opacity:0}}
+@media(prefers-reduced-motion:reduce){html body #card .heading-letter::before{animation:none!important;opacity:0!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
