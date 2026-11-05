@@ -453,20 +453,34 @@ html body .stage .scene-ornament .stem{width:74%!important;height:10%!important;
 #card:has(.wedding-blessing-plaque) .ornament{margin:2px auto!important}
 #card:has(.wedding-blessing-plaque) .date,#card:has(.wedding-blessing-plaque) .info,#card:has(.wedding-blessing-plaque) .venue{margin:3px auto!important}
 @media(max-width:600px){#card:has(.wedding-blessing-plaque) .wedding-blessing-plaque{padding:6px 13px!important;margin:5px auto 2px!important}#card:has(.wedding-blessing-plaque) .wedding-blessing-plaque span{font-size:9px!important;letter-spacing:0!important}}
+</style><style id="premium-event-specific-motifs-both-sides">
+html body .stage .scene-ornament{bottom:8%!important;width:24%!important;height:18%!important;display:flex!important;align-items:center!important;justify-content:center!important;transform:none!important;animation:none!important;filter:drop-shadow(0 7px 8px #0009)!important;pointer-events:none!important}
+html body .stage .scene-ornament.left{left:3%!important;right:auto!important;transform:none!important}
+html body .stage .scene-ornament.right{right:3%!important;left:auto!important;transform:none!important}
+html body .stage .scene-ornament .event-art{width:100%!important;height:100%!important;max-width:180px;max-height:145px;overflow:visible;filter:drop-shadow(0 0 8px #e4ae6244)}
+@media(max-width:600px){html body .stage .scene-ornament{bottom:10%!important;width:24%!important;height:14%!important}html body .stage .scene-ornament.left{left:1%!important}html body .stage .scene-ornament.right{right:1%!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
- const sets=[
-  {label:'BLESSINGS',icon:'✿',accent:'❦'},
-  {label:'SANGEET',icon:'♫',accent:'♬'},
-  {label:'MEHNDI',icon:'❀',accent:'✿'},
-  {label:'WEDDING',icon:'❁',accent:'❦'},
-  {label:'RECEPTION',icon:'✾',accent:'✧'},
-  {label:'DHARWAD',icon:'♛',accent:'✦'}
+ const svg=(content)=>'<svg class="event-art" viewBox="0 0 180 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="eventGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff3bd"/><stop offset=".4" stop-color="#c88c3f"/><stop offset=".7" stop-color="#f6d68b"/><stop offset="1" stop-color="#8c4e22"/></linearGradient></defs>'+content+'</svg>';
+ const motifs=[
+ // Welcome: antique hanging lantern with blossoms
+ '<path d="M90 5V23M76 28Q90 12 104 28L114 43V97L103 111H77L66 97V43Z" fill="#8b461b55" stroke="url(#eventGold)" stroke-width="4"/><path d="M75 45H105V96H75Z" fill="#ffd88977" stroke="#f5d18a" stroke-width="2"/><path d="M90 47L95 70L90 91L85 70Z" fill="#fff1b3"/><path d="M65 44H115M70 99H110M82 115H98" stroke="#eac27c" stroke-width="3"/><g fill="#b53d70" stroke="#f6c5b6" stroke-width="1.5"><ellipse cx="35" cy="98" rx="13" ry="23" transform="rotate(-30 35 98)"/><ellipse cx="50" cy="89" rx="12" ry="20" transform="rotate(20 50 89)"/><ellipse cx="143" cy="99" rx="13" ry="23" transform="rotate(30 143 99)"/><ellipse cx="129" cy="88" rx="12" ry="20" transform="rotate(-20 129 88)"/></g>',
+ // Sangeet: gold veena and musical notes
+ '<path d="M29 104Q53 110 65 85L128 29Q145 17 156 28Q162 38 148 49L86 100Q59 126 29 104Z" fill="#b87634" stroke="url(#eventGold)" stroke-width="5"/><ellipse cx="48" cy="98" rx="27" ry="19" fill="#723a2e" stroke="#f4d38a" stroke-width="4"/><ellipse cx="48" cy="98" rx="14" ry="10" fill="#d8a256" stroke="#ffecac" stroke-width="2"/><path d="M63 88L139 31M66 92L142 35M69 96L145 39" stroke="#fff2b8" stroke-width="1.5"/><path d="M139 24L152 15M146 31L160 23M150 39L166 33" stroke="#f6d48c" stroke-width="4"/><text x="20" y="45" font-size="32" fill="#f6d48c">♫</text><text x="92" y="115" font-size="23" fill="#f6d48c">♪</text>',
+ // Mehndi: gold henna bowl with leaves and intricate paisley
+ '<path d="M45 75Q90 97 135 75L125 105Q90 127 55 105Z" fill="#a16b2f" stroke="url(#eventGold)" stroke-width="4"/><ellipse cx="90" cy="75" rx="46" ry="15" fill="#879039" stroke="#ffdf94" stroke-width="4"/><path d="M28 77Q15 46 38 26Q62 8 65 34Q64 55 45 52Q29 50 37 38" fill="none" stroke="#eac17b" stroke-width="4"/><path d="M151 79Q167 53 144 29Q127 15 116 35" fill="none" stroke="#eac17b" stroke-width="4"/><g fill="#c6a75e" stroke="#f2d393" stroke-width="1"><ellipse cx="21" cy="48" rx="9" ry="17" transform="rotate(-35 21 48)"/><ellipse cx="42" cy="18" rx="8" ry="15" transform="rotate(40 42 18)"/><ellipse cx="155" cy="47" rx="9" ry="17" transform="rotate(35 155 47)"/><ellipse cx="133" cy="18" rx="8" ry="15" transform="rotate(-40 133 18)"/></g>',
+ // Wedding: ornate ceremonial umbrella and jasmine
+ '<path d="M90 13V110" stroke="url(#eventGold)" stroke-width="5"/><path d="M19 66Q26 20 90 16Q154 20 161 66Q140 57 122 66Q106 56 90 66Q73 56 56 66Q37 57 19 66Z" fill="#b88344" stroke="#ffe5a1" stroke-width="4"/><path d="M28 58Q90 4 152 58M90 19V65M55 30L65 64M124 30L115 64" fill="none" stroke="#f9d995" stroke-width="2"/><g fill="#f7d995"><circle cx="20" cy="75" r="4"/><circle cx="55" cy="75" r="4"/><circle cx="90" cy="75" r="4"/><circle cx="125" cy="75" r="4"/><circle cx="160" cy="75" r="4"/></g><path d="M55 111Q90 125 125 111" stroke="#e8bb76" stroke-width="3" fill="none"/><g fill="#f6dfb7"><circle cx="49" cy="113" r="7"/><circle cx="64" cy="119" r="7"/><circle cx="116" cy="119" r="7"/><circle cx="131" cy="113" r="7"/></g>',
+ // Reception: crystal chandelier and orchids
+ '<path d="M90 5V29M39 38Q90 65 141 38M52 45Q90 80 128 45" stroke="url(#eventGold)" stroke-width="4" fill="none"/><path d="M40 39L35 70M65 50L63 88M90 55V100M115 50L117 88M140 39L145 70" stroke="#f7df9d" stroke-width="2"/><g fill="#fff2c0"><path d="M35 70L28 83L35 98L42 83Z"/><path d="M63 88L57 99L63 112L69 99Z"/><path d="M90 100L83 113L90 127L97 113Z"/><path d="M117 88L111 99L117 112L123 99Z"/><path d="M145 70L138 83L145 98L152 83Z"/></g><g fill="#9d4a91" stroke="#f5b7db" stroke-width="1.5"><ellipse cx="19" cy="98" rx="13" ry="20" transform="rotate(-35 19 98)"/><ellipse cx="161" cy="98" rx="13" ry="20" transform="rotate(35 161 98)"/></g>',
+ // Dharwad: ornate gold palace facade
+ '<path d="M20 111V59L40 51V37L55 32V50L72 46V30L90 12L108 30V46L125 50V32L140 37V51L160 59V111Z" fill="#aa7339" stroke="url(#eventGold)" stroke-width="4"/><path d="M30 69H150M28 102H152M50 55V101M130 55V101" stroke="#f6d391" stroke-width="2"/><path d="M74 111V79Q90 60 106 79V111Z" fill="#301831" stroke="#ffdd9a" stroke-width="3"/><path d="M80 44Q90 33 100 44V61H80Z" fill="#35203c" stroke="#f4d18b" stroke-width="2"/><path d="M29 78H41V93H29ZM139 78H151V93H139Z" fill="#35203c" stroke="#f4d18b" stroke-width="2"/><path d="M14 117H166" stroke="#ffdc94" stroke-width="5"/>'
  ];
  window.renderSceneOrnaments=function(){
-  const i=typeof current==='number'?current:0,s=sets[i]||sets[0],holder=document.getElementById('sceneDecor');
+  const i=typeof current==='number'?current:0,holder=document.getElementById('sceneDecor');
   if(!holder)return;
-  holder.innerHTML=['left','right'].map((side)=>'<div class="scene-ornament '+side+'"><div class="crest">'+s.icon+'</div><div class="stem"></div><div class="gem">'+s.label+'</div><div class="ornament-accent">'+s.accent+'</div></div>').join('');
+  const artwork=svg(motifs[i]||motifs[0]);
+  holder.innerHTML=['left','right'].map(side=>'<div class="scene-ornament '+side+'">'+artwork+'</div>').join('');
  };
  const overlay=document.getElementById('heliOverlay'),shower=document.getElementById('heartShower');
  window.playLoveHelicopter=function(){
