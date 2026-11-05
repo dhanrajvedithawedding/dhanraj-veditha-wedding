@@ -1432,6 +1432,14 @@ html body #card[data-tone="3"] .reception-focus > .venue{
  font-size:clamp(18px,4.15vw,25px)!important;
  }
 }
+</style><style id="celebrate-grand-star-message-v57">
+#celebrateGrandMoment{position:fixed;inset:0;pointer-events:none;z-index:115;display:none;overflow:hidden}
+body.celebrate-grand-active #celebrateGrandMoment{display:block}
+#celebrateGrandMoment canvas{width:100%;height:100%;display:block}
+#celebrateGrandMoment .grand-message{position:absolute;top:clamp(18%,30vh,38%);left:50%;width:min(92vw,690px);transform:translate(-50%,-50%) scale(.6);text-align:center;font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:clamp(24px,5.5vw,53px);line-height:1.15;letter-spacing:.035em;color:#ffeac2;text-shadow:0 0 5px #fff7db,0 0 15px #f4ca83,0 0 27px #d05c9a,0 2px 6px #370a31;opacity:0;animation:grandMessageReveal 3.8s ease-out 3.15s both}
+#celebrateGrandMoment .grand-message span{background:linear-gradient(95deg,#e9b6ef,#fff0b3 34%,#c6f8bf 55%,#f3c0e2 78%,#ffe4a1);background-clip:text;-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 0 5px #ffe2b4)}
+@keyframes grandMessageReveal{0%{opacity:0;transform:translate(-50%,-50%) scale(.55);filter:blur(9px)}22%{opacity:1;transform:translate(-50%,-50%) scale(1.12);filter:blur(0)}38%,80%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.04)}}
+@media(prefers-reduced-motion:reduce){#celebrateGrandMoment{display:none!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -1948,5 +1956,65 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
  document.addEventListener('visibilitychange',start);
  window.addEventListener('resize',()=>{if(active)resize()});
  reduced.addEventListener('change',start);start();
+})();
+</script><script id="celebrate-grand-star-message-script-v57">
+(function(){
+ const card=document.getElementById('card');if(!card)return;
+ const root=document.createElement('div');root.id='celebrateGrandMoment';root.setAttribute('aria-hidden','true');
+ root.innerHTML='<canvas></canvas><div class="grand-message"><span>LET’S CELEBRATE TOGETHER</span></div>';
+ document.body.appendChild(root);
+ const canvas=root.querySelector('canvas'),ctx=canvas.getContext('2d');
+ if(!ctx)return;
+ const palette=['#60e39c','#9bf3b4','#ab5be0','#d6a1f7','#85244d','#bd537f','#ffda8b','#fff0bf','#f6d19c'];
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ let particles=[],raf=0,active=false,startAt=0,burstDone=false;
+ function resize(){const d=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(innerWidth*d);canvas.height=Math.round(innerHeight*d);ctx.setTransform(d,0,0,d,0,0)}
+ function explode(){
+  const x=innerWidth*.5,y=innerHeight*.255;
+  for(let i=0;i<235;i++){
+   const angle=Math.PI*2*i/235+Math.random()*.07,speed=1.7+Math.random()*7.3;
+   particles.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:75+Math.random()*72,age:0,
+    r:1.6+Math.random()*3.4,color:palette[i%palette.length],rotation:Math.random()*6.28});
+  }
+ }
+ function star(p,alpha){
+  ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rotation+p.age*.018);ctx.globalAlpha=alpha;
+  ctx.fillStyle=p.color;ctx.shadowColor=p.color;ctx.shadowBlur=11;
+  ctx.beginPath();
+  for(let i=0;i<8;i++){
+   const a=-Math.PI/2+i*Math.PI/4,r=i%2?p.r*.28:p.r;
+   if(!i)ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r);else ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r);
+  }
+  ctx.closePath();ctx.fill();ctx.restore();
+ }
+ function draw(t){
+  if(!active)return;
+  const elapsed=(t-startAt)/1000;
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+  if(elapsed>=3&&!burstDone){burstDone=true;explode()}
+  for(let i=particles.length-1;i>=0;i--){
+   const p=particles[i];p.age++;p.x+=p.vx;p.y+=p.vy;p.vx*=.994;p.vy+=.022;
+   star(p,Math.max(0,Math.min(1,(p.life-p.age)/40)));
+   if(p.age>=p.life)particles.splice(i,1);
+  }
+  raf=requestAnimationFrame(draw);
+ }
+ function stop(){active=false;cancelAnimationFrame(raf);particles=[];ctx.clearRect(0,0,innerWidth,innerHeight);document.body.classList.remove('celebrate-grand-active')}
+ function sync(){
+  const should=card.dataset.tone==='5'&&!document.hidden&&!reduced.matches;
+  if(!should){stop();return}
+  if(active)return;
+  resize();active=true;burstDone=false;startAt=performance.now();
+  // Restart the title reveal each time guests arrive on Celebrate.
+  root.querySelector('.grand-message').style.animation='none';
+  void root.querySelector('.grand-message').offsetWidth;
+  root.querySelector('.grand-message').style.animation='';
+  document.body.classList.add('celebrate-grand-active');
+  raf=requestAnimationFrame(draw);
+ }
+ new MutationObserver(sync).observe(card,{attributes:true,attributeFilter:['data-tone']});
+ document.addEventListener('visibilitychange',sync);
+ window.addEventListener('resize',()=>{if(active)resize()});
+ reduced.addEventListener('change',sync);sync();
 })();
 </script></body></html>
