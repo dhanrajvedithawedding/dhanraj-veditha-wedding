@@ -1492,6 +1492,43 @@ html body #celebrateGrandMoment .grand-message{display:none!important}
  html body #card[data-tone="5"] .celebrate-final-couple,
  html body #card[data-tone="5"] .celebrate-final-title{animation:none!important}
 }
+</style><style id="celebrate-premium-3d-typography-v59">
+/* Layered champagne-gold 3D lettering for the three-line celebration reveal. */
+html body #card[data-tone="5"] .celebrate-final-title{
+ font-family:"Cinzel",Georgia,serif!important;
+ font-weight:900!important;
+ font-size:clamp(30px,7.8vw,72px)!important;
+ line-height:1.16!important;
+ letter-spacing:.035em!important;
+ text-transform:uppercase!important;
+ background:none!important;
+ -webkit-background-clip:initial!important;background-clip:initial!important;
+ color:#fff1c9!important;
+ filter:drop-shadow(0 8px 10px rgba(23,0,19,.65))!important;
+ text-shadow:
+ 0 1px 0 #fff9e4,
+ 0 2px 0 #f9e5ad,
+ 0 3px 0 #e7bb77,
+ 0 4px 0 #cb945a,
+ 0 5px 0 #9d5a4c,
+ 0 6px 0 #70304c,
+ 0 8px 1px #4e193e,
+ 0 12px 10px rgba(25,2,24,.75),
+ 0 0 16px rgba(255,213,148,.55)!important;
+}
+html body #card[data-tone="5"] .celebrate-final-title span{
+ display:block!important;
+ white-space:nowrap!important;
+ background:linear-gradient(180deg,#fffbed 0%,#ffeec3 27%,#e7bb82 51%,#fff2ca 64%,#b87b63 100%)!important;
+ -webkit-background-clip:text!important;background-clip:text!important;
+ -webkit-text-fill-color:transparent!important;
+ filter:drop-shadow(0 3px 0 #71344c) drop-shadow(0 5px 4px rgba(25,0,20,.65))!important;
+}
+@media(max-width:600px){
+ html body #card[data-tone="5"] .celebrate-final-title{
+ font-size:clamp(26px,7.2vw,45px)!important;letter-spacing:.012em!important;
+ }
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -2072,7 +2109,7 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
 </script><script id="celebrate-massive-reveal-script-v58">
 (function(){
  const card=document.getElementById('card');if(!card)return;
- const markup='<div class="celebrate-final-scene"><div class="celebrate-final-title"><span>LET’S</span><span>CELEBRATE</span><span>TOGETHER</span></div><div class="celebrate-final-couple"><img src="0BDD46CF-F46C-4783-B4B2-D31E2CD16B35.png" alt="Dhanraj and Veditha"></div></div>';
+ const markup='<div class="celebrate-final-scene"><div class="celebrate-final-title"><span>LET’S</span><span>CELEBRATE</span><span>TOGETHER!</span></div><div class="celebrate-final-couple"><img src="0BDD46CF-F46C-4783-B4B2-D31E2CD16B35.png" alt="Dhanraj and Veditha"></div></div>';
  let timer=null,armed=false;
  function reset(){
   clearTimeout(timer);timer=null;card.classList.remove('celebrate-reveal');
