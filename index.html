@@ -1382,7 +1382,7 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
 })();
 </script><script id="auto-slide-every-three-seconds-v35">
 (function(){
- const intervalMs=3000;
+ const intervalMs=5000;
  let nextTimer=null;
  const next=document.getElementById('next');
  if(!next)return;
@@ -1402,7 +1402,7 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
  const button=document.getElementById('music');
  if(!button)return;
  const audio=new Audio('PISUMAATHU_from_3m50s_to_end.wav');
- audio.loop=true;audio.preload='auto';audio.volume=.7;audio.playsInline=true;
+ audio.loop=true;audio.preload='auto';audio.autoplay=true;audio.volume=.7;audio.playsInline=true;
  audio.setAttribute('aria-hidden','true');
  function sync(){button.textContent=audio.paused?'♫':'Ⅱ';button.setAttribute('aria-label',audio.paused?'Play wedding background music':'Pause wedding background music');button.title=audio.paused?'Play wedding background music':'Pause wedding background music'}
  button.onclick=async function(){
@@ -1416,6 +1416,7 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
  audio.play().catch(()=>{
   const unlock=()=>{audio.play().then(sync).catch(()=>{});};
   document.addEventListener('pointerdown',unlock,{once:true});
+  document.addEventListener('touchstart',unlock,{once:true,passive:true});
   document.addEventListener('keydown',unlock,{once:true});
  });
 })();
