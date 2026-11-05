@@ -1009,6 +1009,12 @@ html body #card[data-tone="0"] .opening-couple img{
  mix-blend-mode:normal!important;opacity:1!important;
  filter:contrast(1.025) saturate(1.07)!important;
 }
+</style><style id="gold-flakes-on-couple-silhouette-v28">
+html body #card[data-tone="0"] .opening-couple{position:relative!important;isolation:isolate!important}
+html body #card[data-tone="0"] .couple-edge-sparkles{position:absolute;inset:0;pointer-events:none;z-index:2;overflow:visible}
+html body #card[data-tone="0"] .couple-gold-flake{position:absolute;font-style:normal;font-size:clamp(5px,.85vw,9px);line-height:1;color:#ffda83;text-shadow:0 0 5px #ffe3a0,0 0 9px #e4a548;transform:translate(-50%,-50%);animation:coupleGoldTwinkle 3.6s ease-in-out var(--d) infinite}
+@keyframes coupleGoldTwinkle{0%,100%{opacity:.08;transform:translate(-50%,-50%) scale(.35)}45%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}65%{opacity:.45;transform:translate(-50%,-60%) scale(.7)}}
+@media(prefers-reduced-motion:reduce){html body #card[data-tone="0"] .couple-gold-flake{animation:none!important;opacity:.7}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -1186,56 +1192,78 @@ if(card){new MutationObserver(apply).observe(card,{childList:true});apply()}
 })();
 </script><script id="ganapati-style-transparent-couple-v26">
 (function(){
- let processed=null,busy=false;
- function removeWhite(src){
-  return new Promise((resolve)=>{
-   const image=new Image();
-   image.onload=()=>{
-    try{
-     const w=image.naturalWidth,h=image.naturalHeight;
-     const c=document.createElement('canvas');c.width=w;c.height=h;
-     const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(image,0,0);
-     const data=x.getImageData(0,0,w,h),p=data.data,seen=new Uint8Array(w*h),stack=[];
-     function white(i){const k=i*4;return p[k]>206&&p[k+1]>206&&p[k+2]>206&&Math.max(p[k],p[k+1],p[k+2])-Math.min(p[k],p[k+1],p[k+2])<36}
-     function seed(i){if(!seen[i]&&white(i)){seen[i]=1;stack.push(i)}}
-     for(let i=0;i<w;i++){seed(i);seed((h-1)*w+i)}
-     for(let j=0;j<h;j++){seed(j*w);seed(j*w+w-1)}
-     while(stack.length){
-      const i=stack.pop(),k=i*4;p[k+3]=0;
-      const col=i%w;
-      if(col>0)seed(i-1);
-      if(col<w-1)seed(i+1);
-      if(i>=w)seed(i-w);
-      if(i<(h-1)*w)seed(i+w);
-     }
-     // Feather just the light boundary pixels, not the couple's clothing.
-     const original=new Uint8Array(p);
-     for(let i=0;i<w*h;i++){
-      if(seen[i])continue;
-      const col=i%w,row=Math.floor(i/w);
-      if(!((col>0&&seen[i-1])||(col<w-1&&seen[i+1])||(row>0&&seen[i-w])||(row<h-1&&seen[i+w])))continue;
-      const k=i*4;
-      const light=Math.min(p[k],p[k+1],p[k+2]);
-      if(light>155){const a=Math.max(.08,1-(light-155)/92);p[k+3]=Math.round(original[k+3]*a)}
-     }
-     x.putImageData(data,0,0);resolve(c.toDataURL('image/png'));
-    }catch(e){resolve(src)}
-   };
-   image.onerror=()=>resolve(src);
-   image.src=src;
-  });
+let processed=null,busy=false,edgePoints=[];
+function cutout(src){
+return new Promise(resolve=>{
+ const im=new Image();
+ im.onload=()=>{
+ try{
+  const w=im.naturalWidth,h=im.naturalHeight,c=document.createElement('canvas');c.width=w;c.height=h;
+  const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(im,0,0);
+  const d=ctx.getImageData(0,0,w,h),p=d.data,seen=new Uint8Array(w*h),stack=[];
+  function bg(i){const k=i*4,r=p[k],g=p[k+1],b=p[k+2];return r>195&&g>195&&b>190&&Math.max(r,g,b)-Math.min(r,g,b)<46}
+  function seed(i){if(!seen[i]&&bg(i)){seen[i]=1;stack.push(i)}}
+  for(let x=0;x<w;x++){seed(x);seed((h-1)*w+x)}
+  for(let y=0;y<h;y++){seed(y*w);seed(y*w+w-1)}
+  while(stack.length){const i=stack.pop(),x=i%w;
+   if(x>0)seed(i-1);if(x<w-1)seed(i+1);if(i>=w)seed(i-w);if(i<(h-1)*w)seed(i+w);
+  }
+  // Remove bright enclosed white patches between the couple, without touching
+  // small ivory embroidery or jewellery details inside the clothing.
+  const visited=new Uint8Array(w*h);
+  for(let i=0;i<w*h;i++){
+   if(seen[i]||visited[i]||!bg(i))continue;
+   let q=[i],comp=[],touch=false;visited[i]=1;
+   for(let k=0;k<q.length;k++){
+    const j=q[k],x=j%w;comp.push(j);
+    const n=[];if(x>0)n.push(j-1);if(x<w-1)n.push(j+1);if(j>=w)n.push(j-w);if(j<(h-1)*w)n.push(j+w);
+    for(const t of n){if(seen[t])touch=true;else if(!visited[t]&&bg(t)){visited[t]=1;q.push(t)}}
+   }
+   // Interior openings between two figures are sizeable; tiny garment
+   // highlights remain untouched.
+   if(comp.length>=24&&(touch||comp.length>=120))for(const j of comp)seen[j]=1;
+  }
+  for(let i=0;i<w*h;i++)if(seen[i])p[i*4+3]=0;
+  // Decontaminate white antialias fringe for a clean gold-edged silhouette.
+  for(let i=0;i<w*h;i++){
+   if(seen[i])continue;const x=i%w,y=Math.floor(i/w),n=[];
+   if(x>0)n.push(i-1);if(x<w-1)n.push(i+1);if(y>0)n.push(i-w);if(y<h-1)n.push(i+w);
+   if(n.some(j=>seen[j])){
+    const k=i*4,r=p[k],g=p[k+1],b=p[k+2],v=Math.min(r,g,b);
+    if(v>160&&Math.max(r,g,b)-v<60)p[k+3]=Math.round(p[k+3]*Math.max(.06,(238-v)/90));
+   }
+  }
+  const edges=[];
+  for(let y=2;y<h-2;y+=3)for(let x=2;x<w-2;x+=3){
+   const i=y*w+x;if(p[i*4+3]<180)continue;
+   if(seen[i-1]||seen[i+1]||seen[i-w]||seen[i+w]||seen[i-2]||seen[i+2])edges.push([x/w,y/h]);
+  }
+  edgePoints=edges.length?Array.from({length:32},(_,i)=>edges[Math.floor((i+.3)*edges.length/32)]):[];
+  ctx.putImageData(d,0,0);resolve(c.toDataURL('image/png'));
+ }catch(e){resolve(src)}
+ };
+ im.onerror=()=>resolve(src);im.src=src;
+});
+}
+function sparkle(el){
+ const wrap=el.parentElement;if(!wrap||wrap.querySelector('.couple-edge-sparkles'))return;
+ const layer=document.createElement('div');layer.className='couple-edge-sparkles';layer.setAttribute('aria-hidden','true');
+ for(let i=0;i<edgePoints.length;i++){
+  const s=document.createElement('i');s.className='couple-gold-flake';s.textContent=i%3===0?'✦':'✧';
+  s.style.left=(edgePoints[i][0]*100)+'%';s.style.top=(edgePoints[i][1]*100)+'%';
+  s.style.setProperty('--d',(i%11)*.27+'s');layer.appendChild(s);
  }
- async function apply(){
-  const el=document.querySelector('#card[data-tone="0"] .opening-couple img');
-  if(!el||el.dataset.cutoutReady||busy)return;
-  if(processed){el.src=processed;el.dataset.cutoutReady='yes';return}
-  busy=true;
-  processed=await removeWhite(el.getAttribute('src'));
-  busy=false;
-  const current=document.querySelector('#card[data-tone="0"] .opening-couple img');
-  if(current){current.src=processed;current.dataset.cutoutReady='yes'}
- }
- const root=document.getElementById('card');
- if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
+ wrap.appendChild(layer);
+}
+async function apply(){
+ const el=document.querySelector('#card[data-tone="0"] .opening-couple img');
+ if(!el||busy)return;
+ if(processed){if(!el.dataset.cutoutReady){el.src=processed;el.dataset.cutoutReady='yes'}sparkle(el);return}
+ busy=true;processed=await cutout(el.getAttribute('src'));busy=false;
+ const current=document.querySelector('#card[data-tone="0"] .opening-couple img');
+ if(current){current.src=processed;current.dataset.cutoutReady='yes';sparkle(current)}
+}
+const root=document.getElementById('card');
+if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
 })();
 </script></body></html>
