@@ -1116,7 +1116,7 @@ html body .card-wrap{top:calc(48% - 12px)!important}
   const i=typeof current==='number'?current:0,s=sets[i]||sets[0],holder=document.getElementById('sceneDecor');
   if(!holder)return;
   if(i===5){
-   holder.innerHTML='<div class="scene-ornament left final-name-ornament"><div class="gem">DHANRAJ</div></div><div class="scene-ornament right final-name-ornament"><div class="gem">VEDITA</div></div>';
+   holder.innerHTML='<div class="scene-ornament left final-name-ornament"><div class="crest">♛</div><div class="stem"></div><div class="gem">DHANRAJ</div><div class="ornament-accent">✦</div></div><div class="scene-ornament right final-name-ornament"><div class="crest">♛</div><div class="stem"></div><div class="gem">VEDITHA</div><div class="ornament-accent">✦</div></div>';
    return;
   }
   holder.innerHTML=['left','right'].map((side)=>'<div class="scene-ornament '+side+'"><div class="crest">'+s.icon+'</div><div class="stem"></div><div class="gem">'+s.label+'</div><div class="ornament-accent">'+s.accent+'</div></div>').join('');
