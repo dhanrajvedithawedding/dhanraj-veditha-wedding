@@ -1745,6 +1745,23 @@ html body .controls #sceneLabel{opacity:1!important;visibility:visible!important
 html body .controls{height:auto!important;min-height:48px!important;align-items:center!important;padding:5px 8px!important;background:linear-gradient(180deg,#6a330de8,#3b170ce8)!important;border:2px solid #efb954!important}
 html body .controls #prev,html body .controls #next{width:43px!important;height:43px!important;min-width:43px!important}
 html body .controls #sceneLabel{flex:1!important;text-align:center!important}
+</style><style id="fullsize-ivory-reference-v7">
+/* Use the actual uploaded full-size reference for the architectural scene.
+   Keep original live text, page content, navigation, music and all JS animations. */
+html body .stage{background:#510a08 url("1A5E0E04-179D-4BA6-9099-A4CA623A7FC0.png") center center/100% 100% no-repeat!important}
+html body .stage .arch,html body .stage .hanging,html body .stage .scene-decor{visibility:hidden!important}
+html body .stage::before,html body .stage::after{visibility:hidden!important}
+html body .brand{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
+html body .card-wrap{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
+html body #card[data-tone]{background:radial-gradient(ellipse at 50% 38%,#fff3cf 0%,#ffebba 62%,#f3d696 100%)!important;border:3px solid #ffdc86!important;box-shadow:0 0 0 3px #a55d1b,0 0 0 7px #ffdd85,0 12px 28px #420b08aa,inset 0 0 32px #ffd36e70!important}
+html body #card[data-tone] > :is(.names,.date,.info,.venue,.foot,.eyebrow),html body #card[data-tone] .reception-focus{color:#5c1420!important;-webkit-text-fill-color:#5c1420!important;text-shadow:0 1px 1px #fff5d0!important}
+html body #card[data-tone] > .names{font-family:Georgia,"Times New Roman",serif!important;font-size:clamp(26px,5.6vw,49px)!important;font-style:normal!important;font-weight:600!important}
+html body #card[data-tone] > .date{font-family:Georgia,serif!important;text-transform:uppercase!important;font-weight:700!important}
+html body #card[data-tone] > .eyebrow{font-family:Georgia,serif!important;color:#8e4312!important;-webkit-text-fill-color:#8e4312!important;text-shadow:0 1px 1px #fff5d0!important}
+html body #card[data-tone] .reception-focus :is(strong,.reception-time,.venue){color:#5c1420!important;-webkit-text-fill-color:#5c1420!important}
+html body #card[data-tone] .wedding-muhurtham{color:#5c1420!important;-webkit-text-fill-color:#5c1420!important}
+html body .controls{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
+html body .controls #prev,html body .controls #next,html body .controls #sceneLabel{opacity:1!important;visibility:visible!important}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
