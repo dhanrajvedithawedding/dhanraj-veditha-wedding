@@ -1680,6 +1680,39 @@ html body #card[data-tone="3"] .reception-focus *,
 html body #card .wedding-blessing-plaque *{
 color:#14100b!important;-webkit-text-fill-color:#14100b!important;text-shadow:none!important;
 }
+</style><style id="nonoverlapping-header-ornaments-layout-v1">
+/* Keep the couple-name bubble in a dedicated header zone. */
+html body .brand{
+top:max(3%,env(safe-area-inset-top))!important;
+left:50%!important;transform:translateX(-50%)!important;
+max-width:88vw!important;white-space:nowrap!important;
+font-size:clamp(11px,2.4vw,18px)!important;
+padding:9px 20px!important;
+z-index:42!important;
+}
+/* Confine side blessings/decorations to narrow outside gutters,
+   so they cannot cross the centered invitation or header. */
+html body .scene-decor{position:absolute!important;inset:0!important;pointer-events:none!important;z-index:8!important}
+html body .scene-ornament{
+position:absolute!important;top:auto!important;bottom:8%!important;
+width:min(13vw,95px)!important;height:14%!important;
+max-height:125px!important;overflow:visible!important;
+transform:none!important;
+}
+html body .scene-ornament.left{left:1%!important;right:auto!important}
+html body .scene-ornament.right{right:1%!important;left:auto!important}
+html body .scene-ornament :is(.gem,.crest,.ornament-accent){
+max-width:100%!important;text-align:center!important;
+font-size:clamp(8px,1.3vw,13px)!important;
+overflow-wrap:anywhere!important;
+}
+html body .scene-ornament .stem{max-height:26px!important}
+@media(max-width:700px){
+html body .scene-ornament{width:12vw!important;bottom:10%!important;height:12%!important}
+html body .scene-ornament .gem{font-size:clamp(7px,1.8vw,10px)!important}
+html body .scene-ornament .crest{font-size:clamp(12px,3vw,20px)!important}
+}
+/* Keep the invitation's restored dimensions unchanged. */
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
