@@ -2097,6 +2097,24 @@ html body #card .info,html body #card .foot,html body #card .wedding-grace-under
 @media(prefers-reduced-motion:reduce){
 html body #card .eyebrow,html body #card .names,html body #card .ornament,html body #card .date,html body #card .info,html body #card > .venue,html body #card .reception-focus,html body #card .wedding-blessing-plaque,html body #card .foot,html body #card .wedding-grace-under-heading,html body #card .ceremony-title-gold-bubble{animation:none!important}
 }
+</style><style id="wedding-grace-clear-water-bubble-v1">
+/* A subtle transparent water bubble around only the two wedding blessing lines. */
+html body #card[data-tone="3"] .wedding-grace-under-heading{
+width:max-content!important;max-width:94%!important;
+margin:3px auto 5px!important;
+padding:8px 15px!important;
+border-radius:24px!important;
+border:1.5px solid rgba(255,255,255,.84)!important;
+background:
+radial-gradient(ellipse at 28% 8%,rgba(255,255,255,.76),transparent 49%),
+linear-gradient(145deg,rgba(240,250,255,.53),rgba(183,221,238,.30) 54%,rgba(241,250,255,.48))!important;
+box-shadow:inset 0 2px 5px rgba(255,255,255,.84),inset 0 -3px 8px rgba(89,153,176,.18),0 4px 12px rgba(48,75,92,.19)!important;
+backdrop-filter:blur(3px)!important;-webkit-backdrop-filter:blur(3px)!important;
+opacity:1!important;
+}
+html body #card[data-tone="3"] .wedding-grace-under-heading span{
+background:transparent!important;opacity:1!important;
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
