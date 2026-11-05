@@ -991,6 +991,10 @@ html body #card[data-tone="0"] .opening-couple img{
  filter:brightness(1.18) contrast(1.09) saturate(1.12) drop-shadow(0 0 4px rgba(251,215,157,.3))!important;
 }
 @media(max-width:700px){html body #card[data-tone="0"] .opening-couple{width:min(90%,315px)!important;height:clamp(190px,35vh,315px)!important}}
+</style><style id="ganapati-matched-couple-cutout-v26">
+/* Match the Ganapati treatment: clean transparent standalone 3D character artwork. */
+html body #card[data-tone="0"] .opening-couple{background:none!important;filter:drop-shadow(0 7px 12px rgba(0,0,0,.3)) drop-shadow(0 0 12px rgba(246,204,138,.28))!important}
+html body #card[data-tone="0"] .opening-couple img{mix-blend-mode:normal!important;filter:drop-shadow(0 4px 5px rgba(35,14,25,.32))!important;mask-image:none!important;-webkit-mask-image:none!important;object-fit:contain!important}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -1165,5 +1169,59 @@ function apply(){
 }
 const card=document.getElementById('card');
 if(card){new MutationObserver(apply).observe(card,{childList:true});apply()}
+})();
+</script><script id="ganapati-style-transparent-couple-v26">
+(function(){
+ let processed=null,busy=false;
+ function removeWhite(src){
+  return new Promise((resolve)=>{
+   const image=new Image();
+   image.onload=()=>{
+    try{
+     const w=image.naturalWidth,h=image.naturalHeight;
+     const c=document.createElement('canvas');c.width=w;c.height=h;
+     const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(image,0,0);
+     const data=x.getImageData(0,0,w,h),p=data.data,seen=new Uint8Array(w*h),stack=[];
+     function white(i){const k=i*4;return p[k]>224&&p[k+1]>224&&p[k+2]>224&&Math.max(p[k],p[k+1],p[k+2])-Math.min(p[k],p[k+1],p[k+2])<29}
+     function seed(i){if(!seen[i]&&white(i)){seen[i]=1;stack.push(i)}}
+     for(let i=0;i<w;i++){seed(i);seed((h-1)*w+i)}
+     for(let j=0;j<h;j++){seed(j*w);seed(j*w+w-1)}
+     while(stack.length){
+      const i=stack.pop(),k=i*4;p[k+3]=0;
+      const col=i%w;
+      if(col>0)seed(i-1);
+      if(col<w-1)seed(i+1);
+      if(i>=w)seed(i-w);
+      if(i<(h-1)*w)seed(i+w);
+     }
+     // Feather just the light boundary pixels, not the couple's clothing.
+     const original=new Uint8Array(p);
+     for(let i=0;i<w*h;i++){
+      if(seen[i])continue;
+      const col=i%w,row=Math.floor(i/w);
+      if(!((col>0&&seen[i-1])||(col<w-1&&seen[i+1])||(row>0&&seen[i-w])||(row<h-1&&seen[i+w])))continue;
+      const k=i*4;
+      const light=Math.min(p[k],p[k+1],p[k+2]);
+      if(light>190){const a=Math.max(.32,1-(light-190)/90);p[k+3]=Math.round(original[k+3]*a)}
+     }
+     x.putImageData(data,0,0);resolve(c.toDataURL('image/png'));
+    }catch(e){resolve(src)}
+   };
+   image.onerror=()=>resolve(src);
+   image.src=src;
+  });
+ }
+ async function apply(){
+  const el=document.querySelector('#card[data-tone="0"] .opening-couple img');
+  if(!el||el.dataset.cutoutReady||busy)return;
+  if(processed){el.src=processed;el.dataset.cutoutReady='yes';return}
+  busy=true;
+  processed=await removeWhite(el.getAttribute('src'));
+  busy=false;
+  const current=document.querySelector('#card[data-tone="0"] .opening-couple img');
+  if(current){current.src=processed;current.dataset.cutoutReady='yes'}
+ }
+ const root=document.getElementById('card');
+ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
 })();
 </script></body></html>
