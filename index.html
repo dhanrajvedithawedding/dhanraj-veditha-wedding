@@ -708,6 +708,22 @@ html body #stars .star.luxury-sparkle{
  text-shadow:0 0 5px #fff6d2,0 0 13px #e5b14d!important;
 }
 html body #stars .star.luxury-gold-heart{color:#f6c96b!important;-webkit-text-fill-color:#f6c96b!important}
+</style><style id="behind-invitation-larger-venue-time-v14">
+/* Golden flakes sit over palace scenery but under the opaque invitation and navigation. */
+html body #premiumGoldFlakes{z-index:11!important}
+html body .card-wrap{z-index:20!important}
+html body .brand,html body .controls,html body .music-btn{z-index:30!important}
+html body #card .venue{font-size:clamp(18px,2.65vw,25px)!important;line-height:1.34!important;font-weight:650!important;overflow-wrap:break-word!important}
+html body #card .venue strong{font-size:1.03em!important;font-weight:750!important}
+html body #card .info{font-size:clamp(17px,2.35vw,23px)!important;line-height:1.32!important}
+html body #card .wedding-muhurtham{font-size:clamp(18px,2.5vw,24px)!important;line-height:1.35!important;font-weight:750!important}
+html body #card .reception-focus{font-size:clamp(16px,2.3vw,22px)!important;line-height:1.34!important}
+@media(max-width:700px){
+ html body #card .venue{font-size:clamp(16px,4vw,21px)!important;line-height:1.3!important}
+ html body #card .info{font-size:clamp(16px,3.9vw,20px)!important}
+ html body #card .wedding-muhurtham{font-size:clamp(17px,4.2vw,22px)!important}
+ html body #card .reception-focus{font-size:clamp(15px,3.7vw,19px)!important}
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
