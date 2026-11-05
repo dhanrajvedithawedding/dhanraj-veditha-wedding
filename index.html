@@ -1383,4 +1383,26 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start()});
  start();
 })();
+</script><script id="uploaded-wav-background-audio-v39">
+(function(){
+ const button=document.getElementById('music');
+ if(!button)return;
+ const audio=new Audio('PISUMAATHU_from_3m50s_to_end.wav');
+ audio.loop=true;audio.preload='auto';audio.volume=.7;audio.playsInline=true;
+ audio.setAttribute('aria-hidden','true');
+ function sync(){button.textContent=audio.paused?'♫':'Ⅱ';button.setAttribute('aria-label',audio.paused?'Play wedding background music':'Pause wedding background music');button.title=audio.paused?'Play wedding background music':'Pause wedding background music'}
+ button.onclick=async function(){
+  try{if(audio.paused){await audio.play()}else{audio.pause()}}catch(e){button.title='Tap to enable music'}sync();
+ };
+ audio.addEventListener('play',sync);audio.addEventListener('pause',sync);
+ audio.addEventListener('error',()=>{button.title='Wedding audio could not be loaded'});
+ sync();
+ // Browsers commonly block sound until the visitor interacts; try once on load,
+ // then retry on the first tap anywhere if autoplay was blocked.
+ audio.play().catch(()=>{
+  const unlock=()=>{audio.play().then(sync).catch(()=>{});};
+  document.addEventListener('pointerdown',unlock,{once:true});
+  document.addEventListener('keydown',unlock,{once:true});
+ });
+})();
 </script></body></html>
