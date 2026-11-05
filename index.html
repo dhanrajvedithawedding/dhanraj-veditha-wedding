@@ -1849,6 +1849,14 @@ overflow-wrap:break-word!important;
 /* Remove ONLY tiny animated bubbles inside the golden heading letters.
    Retain golden circles and their existing entrance animation. */
 html body #card .heading-letter::before{content:none!important;display:none!important;animation:none!important}
+</style><style id="match-wedding-reception-detail-bubble-to-heading-v1">
+/* Match the single time-and-venue bubble to the burgundy Reception title bubble. */
+html body #card[data-tone="3"] .reception-focus > .reception-details-bubble{
+background:radial-gradient(ellipse at 35% 6%,rgba(255,249,245,.48),transparent 59%),linear-gradient(145deg,#9c507c,#6e234f 60%,#8b396b)!important;
+background-color:#6e234f!important;
+border:1.5px solid rgba(255,226,183,.92)!important;
+box-shadow:inset 0 3px 7px rgba(255,247,235,.4),inset 0 -5px 10px rgba(35,4,28,.5),0 5px 12px rgba(25,2,19,.45)!important;
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
