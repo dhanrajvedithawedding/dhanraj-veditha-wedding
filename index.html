@@ -1721,6 +1721,19 @@ html body .controls #prev,html body .controls #next{opacity:0!important;pointer-
 html body .controls #sceneLabel{opacity:0!important;pointer-events:none!important}
 html body .card-wrap{visibility:visible!important}
 @media (min-aspect-ratio: 3/4){html body .stage{background-size:300% 200%!important}}
+</style><style id="reference-exact-all-pages-v5">
+/* Render each of the six exact panels from the uploaded GitHub reference.
+   Fireworks, sparkles, confetti, music and other JS animations are untouched. */
+html body:has(#card[data-tone="0"]) .stage{background-position:0% 0%!important}
+html body:has(#card[data-tone="1"]) .stage{background-position:0% 100%!important}
+html body:has(#card[data-tone="2"]) .stage{background-position:50% 100%!important}
+html body:has(#card[data-tone="3"]) .stage{background-position:100% 0%!important}
+html body:has(#card[data-tone="4"]) .stage{background-position:50% 0%!important}
+html body:has(#card[data-tone="5"]) .stage{background-position:100% 100%!important}
+html body .stage{background-image:url("EDFC9A2F-B1C8-43B2-9B0A-C153A9293974.png")!important;background-size:300% 200%!important;background-repeat:no-repeat!important}
+html body .card-wrap,html body .brand{visibility:hidden!important}
+html body .controls{visibility:visible!important}
+html body .controls #prev,html body .controls #next{cursor:pointer!important;visibility:visible!important}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
