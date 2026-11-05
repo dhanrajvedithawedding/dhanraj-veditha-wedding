@@ -802,4 +802,30 @@ if(reception&&!reception.querySelector('.venue-map-link')){const row=document.cr
 const card=document.getElementById('card');
 if(card){new MutationObserver(attach).observe(card,{childList:true});attach()}
 })();
+</script><style id="gold-flakes-guaranteed-v13">
+#stars{display:none!important}
+#premiumGoldFlakes{position:fixed!important;inset:0!important;width:100%!important;height:100%!important;z-index:10000!important;pointer-events:none!important;overflow:hidden!important}
+#premiumGoldFlakes .gold-flake{position:absolute;top:-12%;display:block;line-height:1;white-space:nowrap;color:#ffe4a0;opacity:0;will-change:transform,opacity;filter:drop-shadow(0 0 4px #ffedba) drop-shadow(0 0 9px #dba24c);animation:premiumFlakeDown var(--duration,22s) linear var(--delay,0s) infinite!important}
+#premiumGoldFlakes .gold-flake.heart{color:#f4ce83;font-size:.85em}
+@keyframes premiumFlakeDown{0%{transform:translate3d(0,-5vh,0) rotate(0deg);opacity:0}8%{opacity:.95}50%{transform:translate3d(14px,58vh,0) rotate(85deg);opacity:.92}92%{opacity:.8}100%{transform:translate3d(-12px,120vh,0) rotate(190deg);opacity:0}}
+</style>
+<script id="gold-flakes-guaranteed-script">
+(function(){
+function init(){
+document.getElementById('premiumGoldFlakes')?.remove();
+const layer=document.createElement('div');layer.id='premiumGoldFlakes';layer.setAttribute('aria-hidden','true');
+for(let i=0;i<100;i++){
+ const e=document.createElement('span'),heart=i%8===0;
+ e.className='gold-flake'+(heart?' heart':'');
+ e.textContent=heart?'♥':['✦','✧','✶','✦','⋆'][i%5];
+ e.style.left=(Math.random()*100).toFixed(2)+'%';
+ e.style.fontSize=(heart?11:9)+Math.random()*12+'px';
+ e.style.setProperty('--duration',(17+Math.random()*17).toFixed(2)+'s');
+ e.style.setProperty('--delay',(-Math.random()*34).toFixed(2)+'s');
+ layer.appendChild(e);
+}
+document.body.appendChild(layer);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
 </script></body></html>
