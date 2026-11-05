@@ -1420,43 +1420,43 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
 })();
 </script><script id="auto-slide-every-three-seconds-v35">
 (function(){
- const intervalMs=10000;
- const next=document.getElementById('next');
- const prev=document.getElementById('prev');
+ const regularMs=8000, readingMs=10000;
+ const next=document.getElementById('next'),prev=document.getElementById('prev');
  const card=document.getElementById('card');
  if(!next||!card)return;
- let timer=null,paused=false,down=false;
+ let timer=null,deadline=0,remaining=regularMs;
  function stop(){if(timer!==null){clearTimeout(timer);timer=null}}
- function schedule(){
-  stop();
-  if(paused||document.hidden)return;
-  timer=setTimeout(()=>{
+ function schedule(ms){
+  stop();remaining=ms;
+  if(document.hidden)return;
+  deadline=Date.now()+ms;
+  timer=setTimeout(function(){
    timer=null;
-   if(!paused&&!document.hidden){
-    next.click();
-    schedule();
-   }
-  },intervalMs);
+   if(document.hidden)return;
+   next.click();
+   schedule(regularMs);
+  },ms);
  }
- function pause(){paused=true;stop();document.documentElement.classList.add('invitation-reading-paused')}
- function resume(){paused=false;document.documentElement.classList.remove('invitation-reading-paused');schedule()}
- // Touch or click the invitation itself to pause reading; a second tap resumes.
- card.addEventListener('pointerdown',()=>{down=true},{passive:true});
- card.addEventListener('pointerup',()=>{
-  if(!down)return;
-  down=false;
-  if(paused)resume();else pause();
+ // Any intentional screen tap gives the current invitation a full 10 seconds.
+ // The existing background-audio handler also attempts to unlock music on a tap.
+ document.addEventListener('pointerdown',function(e){
+  if(e.target.closest('#prev,#next'))return;
+  schedule(readingMs);
+ },{passive:true});
+ document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'||e.key===' '){schedule(readingMs)}
  });
- card.addEventListener('pointercancel',()=>{down=false});
- card.addEventListener('keydown',e=>{
-  if(e.key==='Enter'||e.key===' '){e.preventDefault();if(paused)resume();else pause()}
- });
- // Manual navigation is still available; after a manual swipe, give a full 10 seconds.
  for(const btn of [next,prev]){
-  if(btn)btn.addEventListener('click',()=>{if(!paused)schedule()});
+  if(btn)btn.addEventListener('click',function(e){
+   if(e.isTrusted)schedule(regularMs);
+  });
  }
- document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else if(!paused)schedule()});
- schedule();
+ document.addEventListener('visibilitychange',function(){
+  if(document.hidden){remaining=Math.max(0,deadline-Date.now());stop()}
+  else schedule(remaining||regularMs);
+ });
+ document.documentElement.classList.remove('invitation-reading-paused');
+ schedule(regularMs);
 })();
 </script><script id="uploaded-wav-background-audio-v39">
 (function(){
