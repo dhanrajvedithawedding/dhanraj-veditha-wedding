@@ -1140,6 +1140,50 @@ html body #card[data-tone="5"] .opening-couple img{
 </style><style id="invitation-reading-pause-hint-v43">
 html body #card{cursor:pointer}
 html body.invitation-reading-paused #sceneLabel::after{content:" · PAUSED";font-size:.7em;letter-spacing:.08em}
+</style><style id="wedding-reception-water-pop-v44">
+/* November 29 Wedding sheet ONLY: raised burgundy water-glass reception bubble. */
+html body #card[data-tone="3"] .reception-focus{
+ position:relative!important;
+ border:2px solid rgba(255,222,167,.91)!important;
+ border-radius:999px!important;
+ background:
+ radial-gradient(ellipse 56% 27% at 33% 7%,rgba(255,246,234,.37),transparent 95%),
+ radial-gradient(ellipse 36% 40% at 85% 85%,rgba(244,135,166,.24),transparent 96%),
+ linear-gradient(155deg,rgba(143,42,85,.94) 0%,rgba(97,18,59,.95) 49%,rgba(65,12,46,.96) 78%,rgba(125,38,80,.96) 100%)!important;
+ box-shadow:
+ inset 0 3px 6px rgba(255,245,228,.36),
+ inset 0 -7px 15px rgba(32,1,26,.55),
+ inset 4px 0 10px rgba(255,180,181,.13),
+ 0 3px 0 rgba(250,201,144,.22),
+ 0 12px 23px rgba(30,1,21,.56),
+ 0 0 19px rgba(244,159,188,.26)!important;
+ backdrop-filter:blur(8px) saturate(145%)!important;
+ -webkit-backdrop-filter:blur(8px) saturate(145%)!important;
+ transform-origin:center center!important;
+ animation:weddingReceptionWaterPop 4.4s ease-in-out infinite!important;
+ will-change:transform!important;
+}
+html body #card[data-tone="3"] .reception-focus::before{
+ content:""!important;position:absolute!important;
+ top:6%!important;left:10%!important;width:56%!important;height:28%!important;
+ border-radius:50%!important;
+ background:linear-gradient(180deg,rgba(255,248,239,.34),rgba(255,234,230,.03))!important;
+ transform:rotate(-7deg)!important;pointer-events:none!important;
+}
+html body #card[data-tone="3"] .reception-focus::after{
+ content:""!important;position:absolute!important;
+ right:7%!important;bottom:8%!important;top:auto!important;
+ width:31%!important;height:24%!important;border-radius:50%!important;
+ background:radial-gradient(ellipse,rgba(255,186,195,.19),transparent 80%)!important;
+ pointer-events:none!important;
+}
+@keyframes weddingReceptionWaterPop{
+ 0%,100%{transform:translateY(0) scale(1)}
+ 50%{transform:translateY(-3px) scale(1.022)}
+}
+@media(prefers-reduced-motion:reduce){
+ html body #card[data-tone="3"] .reception-focus{animation:none!important}
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
