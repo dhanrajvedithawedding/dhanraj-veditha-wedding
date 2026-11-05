@@ -1857,6 +1857,45 @@ background-color:#6e234f!important;
 border:1.5px solid rgba(255,226,183,.92)!important;
 box-shadow:inset 0 3px 7px rgba(255,247,235,.4),inset 0 -5px 10px rgba(35,4,28,.5),0 5px 12px rgba(25,2,19,.45)!important;
 }
+</style><style id="wedding-blessing-reference-gold-plaque-v1">
+/* Wedding 29 November: faithfully styled gold ornamental blessing plaque. */
+html body #card[data-tone="3"] .wedding-blessing-plaque{
+position:relative!important;box-sizing:border-box!important;
+display:flex!important;align-items:center!important;justify-content:center!important;
+width:96%!important;max-width:100%!important;min-height:clamp(38px,6vh,66px)!important;
+margin:5px auto 3px!important;padding:7px clamp(19px,4vw,42px)!important;
+border:3px solid #b86a0b!important;border-radius:999px!important;
+background:linear-gradient(180deg,#fff0c6 0%,#ffe1a4 40%,#f5bd6d 100%)!important;
+box-shadow:0 0 0 2px #ffe8a5,0 0 0 4px #d78922,
+inset 0 2px 3px #fff9e9,inset 0 -3px 5px #b76913,
+0 3px 7px #8b4d1b55!important;
+color:#4b190f!important;-webkit-text-fill-color:#4b190f!important;
+overflow:visible!important;
+}
+html body #card[data-tone="3"] .wedding-blessing-plaque::before,
+html body #card[data-tone="3"] .wedding-blessing-plaque::after{
+content:"❧"!important;display:flex!important;position:absolute!important;
+top:50%!important;transform:translateY(-50%)!important;
+align-items:center!important;justify-content:center!important;
+font-size:clamp(13px,2.2vw,22px)!important;line-height:1!important;
+width:clamp(15px,3vw,27px)!important;height:26px!important;
+color:#8c2d0a!important;-webkit-text-fill-color:#8c2d0a!important;
+text-shadow:1px 1px #ffdc87,-1px -1px #f4ad3c!important;
+}
+html body #card[data-tone="3"] .wedding-blessing-plaque::before{left:clamp(5px,1.4vw,16px)!important}
+html body #card[data-tone="3"] .wedding-blessing-plaque::after{right:clamp(5px,1.4vw,16px)!important;transform:translateY(-50%) scaleX(-1)!important}
+html body #card[data-tone="3"] .wedding-blessing-plaque span{
+display:block!important;position:relative!important;z-index:1!important;
+font-family:Georgia,"Times New Roman",serif!important;
+font-weight:700!important;font-size:clamp(9px,1.45vw,19px)!important;
+letter-spacing:.012em!important;line-height:1.15!important;
+text-align:center!important;color:#4b190f!important;-webkit-text-fill-color:#4b190f!important;
+text-shadow:none!important;
+}
+@media(max-width:700px){
+html body #card[data-tone="3"] .wedding-blessing-plaque{width:96%!important;padding:6px 22px!important;min-height:39px!important;border-width:2px!important}
+html body #card[data-tone="3"] .wedding-blessing-plaque span{font-size:clamp(8px,2.05vw,12px)!important}
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
