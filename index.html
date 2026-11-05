@@ -1255,6 +1255,49 @@ html body #card[data-tone="3"] .reception-focus > .reception-time{
 @media(prefers-reduced-motion:reduce){
  html body #card[data-tone="3"] .reception-focus > strong{animation:none!important}
 }
+</style><style id="wedding-reception-single-sheet-fit-v47">
+/* Fit wedding details, reception and blessing inside the same invitation sheet. */
+html body #card[data-tone="3"]{
+ display:flex!important;flex-direction:column!important;align-items:center!important;
+ justify-content:space-evenly!important;
+ gap:clamp(1px,.35vh,5px)!important;
+ padding:clamp(9px,1.5vh,18px) clamp(11px,2vw,22px)!important;
+ overflow-y:auto!important;overflow-x:hidden!important;
+ box-sizing:border-box!important;
+}
+html body #card[data-tone="3"] > :is(.eyebrow,.names,.ornament,.date,.info,.venue,.reception-focus,.wedding-blessing-plaque,.foot){
+ flex-shrink:1!important;min-height:0!important;
+ margin-top:0!important;margin-bottom:0!important;
+}
+html body #card[data-tone="3"] .eyebrow{font-size:clamp(17px,3.4vw,30px)!important;line-height:1.05!important}
+html body #card[data-tone="3"] .names{font-size:clamp(30px,6.6vw,51px)!important;line-height:1.02!important}
+html body #card[data-tone="3"] .ornament{font-size:clamp(13px,2.8vw,20px)!important;line-height:1!important}
+html body #card[data-tone="3"] .date{font-size:clamp(16px,3.5vw,27px)!important;line-height:1.08!important}
+html body #card[data-tone="3"] .info{font-size:clamp(14px,3.1vw,22px)!important;line-height:1.12!important}
+html body #card[data-tone="3"] .wedding-muhurtham{margin:2px 0!important;line-height:1.12!important}
+html body #card[data-tone="3"] > .venue{font-size:clamp(15px,3.15vw,23px)!important;line-height:1.12!important}
+html body #card[data-tone="3"] .reception-focus{
+ width:100%!important;max-width:100%!important;
+ gap:2px!important;padding:1px 0!important;margin:1px auto!important;
+}
+html body #card[data-tone="3"] .reception-focus > strong{
+ font-size:clamp(26px,5vw,39px)!important;
+ padding:0px 21px 2px!important;margin:0 auto!important;
+}
+html body #card[data-tone="3"] .reception-focus > .reception-time{
+ font-size:clamp(15px,3vw,22px)!important;line-height:1.08!important;
+}
+html body #card[data-tone="3"] .reception-focus > .venue{
+ font-size:clamp(14px,3.1vw,22px)!important;line-height:1.1!important;
+}
+html body #card[data-tone="3"] .wedding-blessing-plaque{
+ padding:clamp(3px,.5vh,7px) 6px!important;
+ font-size:clamp(10px,2.15vw,15px)!important;line-height:1.12!important;
+}
+@media(max-width:700px){
+ html body #card[data-tone="3"]{gap:2px!important;padding:8px 10px!important}
+ html body #card[data-tone="3"] .reception-focus > .venue{font-size:clamp(13px,3.1vw,19px)!important}
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
