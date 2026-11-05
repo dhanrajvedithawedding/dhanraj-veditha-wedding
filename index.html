@@ -1432,6 +1432,30 @@ html body #card[data-tone="3"] .reception-focus > .venue{
  font-size:clamp(18px,4.15vw,25px)!important;
  }
 }
+</style><style id="opening-parachute-couple-v55">
+#openingParachuteScene{position:fixed;inset:0;z-index:109;pointer-events:none;overflow:hidden;display:none}
+body.parachute-opening #openingParachuteScene{display:block}
+#openingParachuteScene .parachute-flyer{position:absolute;top:0;width:clamp(100px,20vw,185px);height:clamp(205px,35vh,310px);filter:drop-shadow(0 5px 9px #25051d88);opacity:0;animation:parachuteDescend 7.3s ease-out both}
+#openingParachuteScene .parachute-flyer.groom{left:1%;--tilt:-5deg;--drift:13px}
+#openingParachuteScene .parachute-flyer.bride{right:1%;--tilt:5deg;--drift:-13px}
+#openingParachuteScene .parachute-canopy{width:100%;height:47%;position:absolute;top:0;left:0;overflow:visible}
+#openingParachuteScene .parachute-person{position:absolute;top:42%;left:22%;width:56%;height:49%;overflow:hidden;mask-image:radial-gradient(ellipse 57% 65% at 50% 49%,#000 62%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 57% 65% at 50% 49%,#000 62%,transparent 100%)}
+#openingParachuteScene .parachute-person img{position:absolute;height:100%;width:210%;max-width:none;object-fit:fill;top:0}
+#openingParachuteScene .groom .parachute-person img{left:0}
+#openingParachuteScene .bride .parachute-person img{right:0}
+#openingParachuteScene .spark-gun{position:absolute;top:59%;width:24%;height:11%;background:linear-gradient(120deg,#ffe7a6,#9d6a35 40%,#2d283b 41%,#11121d 90%);border:1px solid #f9dfaa;border-radius:4px 8px 3px 3px;box-shadow:0 0 8px #ffdc7e}
+#openingParachuteScene .groom .spark-gun{right:3%;transform:rotate(-30deg)}
+#openingParachuteScene .bride .spark-gun{left:3%;transform:rotate(30deg)}
+#openingParachuteScene .spark-gun::before{content:"";position:absolute;top:-5px;left:38%;width:8px;height:8px;border-radius:50%;background:#fff9db;box-shadow:0 0 12px 5px #ffe0a3,0 0 22px 8px #fff6d2;animation:sparkGunPulse .3s alternate infinite}
+#openingParachuteScene .spark-trail{position:absolute;top:50%;width:40%;height:30%;background:radial-gradient(circle at 50% 90%,#fff7cd 0 2%,transparent 4%),radial-gradient(circle at 30% 60%,#ffcc77 0 2%,transparent 4%),radial-gradient(circle at 70% 20%,#fff2c5 0 2%,transparent 4%);filter:drop-shadow(0 0 5px #ffe8b2);animation:sparkGunPulse .4s alternate infinite}
+#openingParachuteScene .groom .spark-trail{right:-12%;transform:rotate(30deg)}
+#openingParachuteScene .bride .spark-trail{left:-12%;transform:rotate(-30deg)}
+#openingParachuteScene .rainbow-float{position:absolute;bottom:-15px;width:6px;height:12px;border-radius:2px;background:var(--c);left:var(--x);opacity:0;animation:rainbowFloatUp var(--duration) ease-out var(--delay) both;box-shadow:0 0 6px var(--c)}
+@keyframes parachuteDescend{0%{transform:translateY(-110%) rotate(var(--tilt));opacity:0}9%{opacity:1}80%{opacity:1}100%{transform:translate(var(--drift),24vh) rotate(0);opacity:1}}
+@keyframes rainbowFloatUp{0%{transform:translate(0,0) rotate(0);opacity:0}15%{opacity:1}85%{opacity:.9}100%{transform:translate(var(--side),-85vh) rotate(420deg);opacity:0}}
+@keyframes sparkGunPulse{from{opacity:.5;filter:brightness(1)}to{opacity:1;filter:brightness(1.7)}}
+@media(max-width:600px){#openingParachuteScene .parachute-flyer{width:clamp(92px,26vw,130px);height:clamp(175px,27vh,240px)}#openingParachuteScene .parachute-flyer.groom{left:0}#openingParachuteScene .parachute-flyer.bride{right:0}}
+@media(prefers-reduced-motion:reduce){#openingParachuteScene{display:none!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -1896,5 +1920,34 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
  document.addEventListener('visibilitychange',sync);
  window.addEventListener('resize',()=>{if(active)resize()});
  reduced.addEventListener('change',sync);sync();
+})();
+</script><script id="opening-parachute-couple-script-v55">
+(function(){
+ const card=document.getElementById('card');if(!card)return;
+ const root=document.createElement('div');root.id='openingParachuteScene';root.setAttribute('aria-hidden','true');document.body.appendChild(root);
+ const image='0BDD46CF-F46C-4783-B4B2-D31E2CD16B35.png';
+ const canopy='<svg class="parachute-canopy" viewBox="0 0 180 145" preserveAspectRatio="none"><defs><clipPath id="rainbowChute"><path d="M5 67 Q11 4 90 5 Q169 4 175 67 Q157 53 140 68 Q123 53 106 68 Q90 53 74 68 Q57 53 40 68 Q23 53 5 67Z"/></clipPath></defs><g clip-path="url(#rainbowChute)"><rect x="0" y="0" width="27" height="72" fill="#ff4774"/><rect x="27" y="0" width="26" height="72" fill="#ff9e37"/><rect x="53" y="0" width="25" height="72" fill="#ffed5b"/><rect x="78" y="0" width="25" height="72" fill="#4ce88a"/><rect x="103" y="0" width="25" height="72" fill="#4ecfff"/><rect x="128" y="0" width="26" height="72" fill="#716aff"/><rect x="154" y="0" width="26" height="72" fill="#db67ec"/></g><path d="M5 67 Q11 4 90 5 Q169 4 175 67" stroke="#ffe7b2" stroke-width="3" fill="none"/><g stroke="#f7e2be" stroke-width="1.7" fill="none"><path d="M5 67 L72 136 M40 68 L76 136 M74 68 L84 136 M106 68 L96 136 M140 68 L104 136 M175 67 L108 136"/></g></svg>';
+ function flyer(side){return '<div class="parachute-flyer '+side+'">'+canopy+'<div class="parachute-person"><img src="'+image+'" alt=""></div><div class="spark-gun"></div><div class="spark-trail"></div></div>'}
+ const colors=['#ff4774','#ff9e37','#ffed5b','#4ce88a','#4ecfff','#716aff','#db67ec'];
+ function start(){
+  root.innerHTML=flyer('groom')+flyer('bride');
+  // Rainbow-colored particles rise from both edges while the parachutes descend.
+  for(let i=0;i<62;i++){
+   const span=document.createElement('i');span.className='rainbow-float';
+   span.style.setProperty('--c',colors[i%colors.length]);
+   span.style.setProperty('--x',(i%2===0?3+Math.random()*17:80+Math.random()*17)+'%');
+   span.style.setProperty('--side',(Math.random()-.5)*90+'px');
+   span.style.setProperty('--duration',(3.8+Math.random()*2.2)+'s');
+   span.style.setProperty('--delay',(Math.random()*3.3)+'s');
+   root.appendChild(span);
+  }
+  document.body.classList.add('parachute-opening');
+ }
+ function stop(){document.body.classList.remove('parachute-opening');root.innerHTML=''}
+ let shown=false;
+ function sync(){const on=card.dataset.tone==='0'&&!document.hidden&&!matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(on&&!shown){shown=true;start()}else if(!on&&shown){shown=false;stop()}}
+ new MutationObserver(sync).observe(card,{attributes:true,attributeFilter:['data-tone']});
+ document.addEventListener('visibilitychange',sync);sync();
 })();
 </script></body></html>
