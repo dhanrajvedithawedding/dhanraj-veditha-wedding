@@ -1896,6 +1896,73 @@ text-shadow:none!important;
 html body #card[data-tone="3"] .wedding-blessing-plaque{width:96%!important;padding:6px 22px!important;min-height:39px!important;border-width:2px!important}
 html body #card[data-tone="3"] .wedding-blessing-plaque span{font-size:clamp(8px,2.05vw,12px)!important}
 }
+</style><style id="reference-gold-ganapati-headings-reception-v1">
+/* Reference: embossed golden Ganapati niche and symmetrical scroll flourishes. */
+html body #card[data-tone="1"] .symbol,
+html body #card[data-tone="2"] .symbol,
+html body #card[data-tone="3"] .symbol,
+html body #card[data-tone="4"] .symbol{
+position:relative!important;display:flex!important;justify-content:center!important;
+align-items:center!important;isolation:isolate!important;overflow:visible!important;
+width:min(94%,410px)!important;min-height:clamp(65px,13vh,130px)!important;
+margin:0 auto 5px!important;
+}
+html body #card[data-tone="1"] .symbol::before,
+html body #card[data-tone="2"] .symbol::before,
+html body #card[data-tone="3"] .symbol::before,
+html body #card[data-tone="4"] .symbol::before{
+content:""!important;position:absolute!important;z-index:0!important;
+height:95%!important;width:clamp(74px,15vw,137px)!important;top:0!important;left:50%!important;
+transform:translateX(-50%)!important;border-radius:36% 36% 13% 13%!important;
+background:radial-gradient(ellipse at 45% 20%,#81310b,#40150b 74%)!important;
+border:3px double #fbd57d!important;
+box-shadow:0 0 0 2px #b66a1c,0 3px 9px #6b310d80,inset 0 2px 12px #edaa4766!important;
+}
+html body #card[data-tone="1"] .symbol::after,
+html body #card[data-tone="2"] .symbol::after,
+html body #card[data-tone="3"] .symbol::after,
+html body #card[data-tone="4"] .symbol::after{
+content:"❧ ──── ❦ ──── ❧"!important;
+position:absolute!important;z-index:-1!important;left:50%!important;top:49%!important;
+transform:translate(-50%,-50%)!important;width:100%!important;
+text-align:center!important;white-space:nowrap!important;
+font-family:Georgia,serif!important;font-size:clamp(14px,3vw,27px)!important;
+color:#a75a0c!important;-webkit-text-fill-color:#a75a0c!important;
+text-shadow:0 1px #ffefad,0 2px 3px #8b460a!important;
+}
+html body #card[data-tone="1"] .symbol .ganapati-art,
+html body #card[data-tone="2"] .symbol .ganapati-art,
+html body #card[data-tone="3"] .symbol .ganapati-art,
+html body #card[data-tone="4"] .symbol .ganapati-art{
+position:relative!important;z-index:2!important;
+width:auto!important;max-width:clamp(65px,13vw,116px)!important;
+max-height:clamp(63px,12vh,119px)!important;object-fit:contain!important;
+mix-blend-mode:normal!important;
+}
+/* Keep one bubble per letter, using the attached raised-gold medallion look. */
+html body #card .letter-bubble-heading .heading-letter{
+background:radial-gradient(circle at 35% 20%,#fff5c7 0%,#fce2a0 40%,#edbb64 76%,#d58b2d 100%)!important;
+border:2px solid #c47b1d!important;
+border-radius:50%!important;
+box-shadow:0 0 0 1px #ffebae,inset 0 2px 4px #fffce3,inset 0 -3px 4px #a76113,0 4px 5px #7e400b55!important;
+color:#431b13!important;-webkit-text-fill-color:#431b13!important;
+text-shadow:none!important;
+}
+html body #card .letter-bubble-heading .heading-letter::after{
+content:""!important;position:absolute!important;left:50%!important;top:calc(100% + 4px)!important;
+width:4px!important;height:4px!important;border-radius:50%!important;
+background:#8b3a12!important;box-shadow:0 0 0 2px #edb85e!important;
+opacity:1!important;
+}
+/* Match the reference Reception capsule on the 29 November wedding page. */
+html body #card[data-tone="3"] .reception-focus > strong{
+font-family:"Italianno",cursive!important;font-weight:500!important;
+color:#55221b!important;-webkit-text-fill-color:#55221b!important;
+background:linear-gradient(180deg,#fff4d0 0%,#ffdc93 55%,#e9aa4d 100%)!important;
+border:2px solid #bb7419!important;border-radius:999px!important;
+box-shadow:0 0 0 2px #ffe8a5,inset 0 2px 5px #fff7db,inset 0 -3px 5px #aa6016,0 4px 9px #79400c55!important;
+text-shadow:none!important;
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
