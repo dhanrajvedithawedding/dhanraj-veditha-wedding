@@ -976,6 +976,21 @@ html body #card[data-tone="0"] .opening-couple img{
  -webkit-mask-image:radial-gradient(ellipse 84% 84% at 50% 48%,#000 63%,rgba(0,0,0,.94) 80%,transparent 100%)!important;
  mask-image:radial-gradient(ellipse 84% 84% at 50% 48%,#000 63%,rgba(0,0,0,.94) 80%,transparent 100%)!important;
 }
+</style><style id="only-anime-couple-no-white-backdrop-v25">
+/* First invitation only: make white artwork backdrop visually disappear
+   so only the anime couple blends with the burgundy/gold invitation. */
+html body #card[data-tone="0"] .opening-couple{
+ background:transparent!important;isolation:auto!important;
+ width:min(88%,360px)!important;height:clamp(205px,39vh,370px)!important;
+ filter:none!important;overflow:visible!important;
+}
+html body #card[data-tone="0"] .opening-couple img{
+ background:transparent!important;mix-blend-mode:multiply!important;
+ opacity:1!important;object-fit:contain!important;
+ mask-image:none!important;-webkit-mask-image:none!important;
+ filter:brightness(1.18) contrast(1.09) saturate(1.12) drop-shadow(0 0 4px rgba(251,215,157,.3))!important;
+}
+@media(max-width:700px){html body #card[data-tone="0"] .opening-couple{width:min(90%,315px)!important;height:clamp(190px,35vh,315px)!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
