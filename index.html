@@ -1529,6 +1529,16 @@ html body #card[data-tone="5"] .celebrate-final-title span{
  font-size:clamp(26px,7.2vw,45px)!important;letter-spacing:.012em!important;
  }
 }
+</style><style id="celebrate-text-cannon-reveal-v60">
+html body #card[data-tone="5"].celebrate-reveal .celebrate-final-title{position:relative;isolation:isolate;animation:celebrateTextBreakthrough 1.35s cubic-bezier(.15,.8,.22,1) both!important}
+html body #card[data-tone="5"].celebrate-reveal .celebrate-final-title span:nth-child(1){animation:celebrateWordBreak .9s ease-out .05s both}
+html body #card[data-tone="5"].celebrate-reveal .celebrate-final-title span:nth-child(2){animation:celebrateWordBreak .9s ease-out .2s both}
+html body #card[data-tone="5"].celebrate-reveal .celebrate-final-title span:nth-child(3){animation:celebrateWordBreak .9s ease-out .35s both}
+@keyframes celebrateTextBreakthrough{0%{opacity:0;transform:scale(.2) translateY(30px);filter:blur(12px)}35%{opacity:1;transform:scale(1.24) translateY(-7px);filter:blur(0)}65%{transform:scale(.96) translateY(2px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes celebrateWordBreak{0%{opacity:0;transform:scale(.25) rotateX(75deg)}48%{opacity:1;transform:scale(1.13) rotateX(-10deg)}100%{opacity:1;transform:scale(1) rotateX(0)}}
+#celebrateTextSparkCanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:117;display:none}
+body.celebrate-text-sparks #celebrateTextSparkCanvas{display:block}
+@media(prefers-reduced-motion:reduce){#celebrateTextSparkCanvas{display:none!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -2128,5 +2138,66 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
  }
  new MutationObserver(sync).observe(card,{attributes:true,attributeFilter:['data-tone']});
  document.addEventListener('visibilitychange',sync);sync();
+})();
+</script><script id="celebrate-text-cannon-reveal-script-v60">
+(function(){
+ const card=document.getElementById('card');if(!card)return;
+ const canvas=document.createElement('canvas');canvas.id='celebrateTextSparkCanvas';canvas.setAttribute('aria-hidden','true');document.body.appendChild(canvas);
+ const ctx=canvas.getContext('2d');if(!ctx)return;
+ const colors=['#fff5d6','#ffe3a2','#bceebd','#c78df3','#eaa5ca','#ad4a7c','#e6bb86'];
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ let bits=[],raf=0,active=false,begin=0,emitted=false;
+ function resize(){const d=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(innerWidth*d);canvas.height=Math.round(innerHeight*d);ctx.setTransform(d,0,0,d,0,0)}
+ function emit(){
+  const title=card.querySelector('.celebrate-final-title');if(!title)return;
+  const r=title.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+  // Two side cannons burst toward the wording; bright cold-spark streaks shoot outward.
+  for(let side=0;side<2;side++){
+   const x=side===0?r.left:r.right,y=cy;
+   for(let i=0;i<125;i++){
+    const a=(side===0?0:Math.PI)+(Math.random()-.5)*2.25;
+    const speed=2.1+Math.random()*8;
+    bits.push({x,y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed-1.8,
+     life:40+Math.random()*42,age:0,c:colors[Math.floor(Math.random()*colors.length)],
+     size:1.5+Math.random()*3.8,kind:i%3===0?'star':i%3===1?'confetti':'spark',rot:Math.random()*6.28});
+   }
+  }
+  for(let i=0;i<110;i++){
+   const a=Math.random()*Math.PI*2,s=2.5+Math.random()*7.8;
+   bits.push({x:cx,y:cy,vx:Math.cos(a)*s,vy:Math.sin(a)*s,
+    life:35+Math.random()*42,age:0,c:colors[i%colors.length],
+    size:1.4+Math.random()*3.4,kind:i%2?'spark':'star',rot:Math.random()*6.28});
+  }
+ }
+ function frame(t){
+  if(!active)return;
+  const dt=Math.min(2,Math.max(.4,(t-(frame.last||t))/16.67));frame.last=t;
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+  if(!emitted&&t-begin>130){emitted=true;emit()}
+  for(let i=bits.length-1;i>=0;i--){
+   const p=bits[i];p.age+=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vx*=.985;p.vy+=.075*dt;
+   const alpha=Math.max(0,Math.min(1,(p.life-p.age)/22));
+   ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot+p.age*.045);ctx.globalAlpha=alpha;
+   ctx.fillStyle=p.c;ctx.strokeStyle=p.c;ctx.shadowColor=p.c;ctx.shadowBlur=p.kind==='spark'?13:7;
+   if(p.kind==='confetti')ctx.fillRect(-p.size/2,-p.size,p.size,p.size*2);
+   else if(p.kind==='spark'){ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(-p.vx*1.9,-p.vy*1.9);ctx.stroke()}
+   else{ctx.beginPath();for(let k=0;k<8;k++){const a=-Math.PI/2+k*Math.PI/4,r=k%2?p.size*.25:p.size;if(!k)ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r);else ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r)}ctx.closePath();ctx.fill()}
+   ctx.restore();if(p.age>=p.life)bits.splice(i,1);
+  }
+  if(t-begin>3400&&bits.length===0){stop();return}
+  raf=requestAnimationFrame(frame);
+ }
+ function stop(){active=false;cancelAnimationFrame(raf);bits=[];document.body.classList.remove('celebrate-text-sparks');ctx.clearRect(0,0,innerWidth,innerHeight)}
+ function sync(){
+  const on=card.dataset.tone==='5'&&card.classList.contains('celebrate-reveal')&&!document.hidden&&!reduced.matches;
+  if(!on){if(active)stop();return}
+  if(active)return;
+  active=true;emitted=false;resize();begin=performance.now();frame.last=begin;
+  document.body.classList.add('celebrate-text-sparks');raf=requestAnimationFrame(frame);
+ }
+ new MutationObserver(sync).observe(card,{attributes:true,attributeFilter:['data-tone','class']});
+ document.addEventListener('visibilitychange',sync);
+ window.addEventListener('resize',()=>{if(active)resize()});
+ reduced.addEventListener('change',sync);sync();
 })();
 </script></body></html>
