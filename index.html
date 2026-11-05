@@ -1659,6 +1659,29 @@ background-position:center center!important;
 background-size:100% 100%!important;
 background-repeat:no-repeat!important;
 }
+</style><style id="five-percent-smaller-gold-water-bubbles-v2">
+/* Reduce the centered invitation panel by 5% in both dimensions, keeping its center fixed. */
+html body .card-wrap{inset:13.875% 17.7% 14.875%!important}
+html body .card-wrap .card{max-width:95%!important;max-height:95%!important}
+/* Consistent rich champagne-gold glass bubbles and dark lettering throughout. */
+html body .brand,
+html body #card .heading-letter,
+html body #card .dharwad-water-bubble,
+html body #card[data-tone="3"] .reception-focus,
+html body #card[data-tone="3"] .reception-focus .reception-label,
+html body #card .wedding-blessing-plaque{
+background:radial-gradient(ellipse at 27% 12%,rgba(255,255,236,.94),transparent 40%),linear-gradient(145deg,#fff0ac 0%,#eac16a 32%,#d29b38 68%,#f7d88d 100%)!important;
+border-color:#f8e0a1!important;
+box-shadow:inset 0 2px 6px #fff9dfb8,inset 0 -4px 9px #97600b55,0 4px 15px #c68c3599!important;
+color:#14100b!important;-webkit-text-fill-color:#14100b!important;text-shadow:none!important;
+}
+html body .brand *,
+html body #card .heading-letter *,
+html body #card .dharwad-water-bubble *,
+html body #card[data-tone="3"] .reception-focus *,
+html body #card .wedding-blessing-plaque *{
+color:#14100b!important;-webkit-text-fill-color:#14100b!important;text-shadow:none!important;
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
