@@ -843,6 +843,42 @@ html body #card[data-tone="4"] .dharwad-water-bubble{
 @keyframes dharwadWaterGlow{0%,100%{filter:brightness(1);transform:translateY(0)}50%{filter:brightness(1.13);transform:translateY(-2px)}}
 @media(max-width:700px){html body #card[data-tone="4"] .dharwad-water-bubble{font-size:clamp(16px,4.3vw,21px)!important;padding:6px 17px!important;margin:3px auto 1px!important}}
 @media(prefers-reduced-motion:reduce){html body #card[data-tone="4"] .dharwad-water-bubble{animation:none!important}}
+</style><style id="eighty-percent-invitation-fill-v21">
+/* Wedding, Sangeet and Mehndi: use approximately 80% of available invitation height.
+   Responsive sizing prevents cutting off long wedding details. */
+html body #card:is([data-tone="1"],[data-tone="2"],[data-tone="3"]){
+ justify-content:space-evenly!important;
+ gap:clamp(4px,.75vh,11px)!important;
+ padding-block:clamp(12px,2vh,22px)!important;
+}
+html body #card:is([data-tone="1"],[data-tone="2"],[data-tone="3"]) > .symbol{margin-block:clamp(3px,.6vh,8px)!important}
+html body #card:is([data-tone="1"],[data-tone="2"],[data-tone="3"]) > .eyebrow{margin-block:clamp(3px,.65vh,8px)!important}
+html body #card:is([data-tone="1"],[data-tone="2"],[data-tone="3"]) > .names{margin-block:clamp(4px,.85vh,10px)!important}
+html body #card:is([data-tone="1"],[data-tone="2"],[data-tone="3"]) > .ornament{margin-block:clamp(2px,.5vh,6px)!important}
+html body #card:is([data-tone="1"],[data-tone="2"],[data-tone="3"]) > :is(.date,.info,.venue){margin-block:clamp(3px,.65vh,8px)!important}
+html body #card:is([data-tone="1"],[data-tone="2"],[data-tone="3"]) > .foot{margin-block:clamp(4px,.9vh,10px)!important}
+html body #card:is([data-tone="1"],[data-tone="2"]) > .names{font-size:clamp(38px,6.6vw,72px)!important}
+html body #card:is([data-tone="1"],[data-tone="2"]) > .date{font-size:clamp(19px,2.55vw,27px)!important}
+html body #card:is([data-tone="1"],[data-tone="2"]) > .info{font-size:clamp(19px,2.55vw,26px)!important}
+html body #card:is([data-tone="1"],[data-tone="2"]) > .venue{font-size:clamp(19px,2.7vw,27px)!important}
+html body #card[data-tone="3"] > .names{font-size:clamp(35px,5.5vw,62px)!important}
+html body #card[data-tone="3"] > .date{font-size:clamp(18px,2.35vw,24px)!important}
+html body #card[data-tone="3"] > .info{font-size:clamp(17px,2.2vw,23px)!important}
+html body #card[data-tone="3"] > .venue{font-size:clamp(15px,2vw,20px)!important}
+html body #card[data-tone="3"] .reception-focus{margin-block:clamp(4px,.7vh,8px)!important}
+@media(max-width:700px){
+ html body #card:is([data-tone="1"],[data-tone="2"],[data-tone="3"]){gap:clamp(3px,.6vh,7px)!important;padding-block:clamp(10px,1.6vh,16px)!important}
+ html body #card:is([data-tone="1"],[data-tone="2"]) > .names{font-size:clamp(36px,8.5vw,54px)!important}
+ html body #card:is([data-tone="1"],[data-tone="2"]) > :is(.date,.info,.venue){font-size:clamp(17px,4.25vw,22px)!important}
+ html body #card[data-tone="3"] > .names{font-size:clamp(30px,7.3vw,44px)!important}
+ html body #card[data-tone="3"] > .date{font-size:clamp(16px,3.8vw,21px)!important}
+ html body #card[data-tone="3"] > .info{font-size:clamp(16px,3.7vw,20px)!important}
+ html body #card[data-tone="3"] > .venue{font-size:clamp(14px,3.45vw,18px)!important}
+}
+@media(max-height:690px){
+ html body #card:is([data-tone="1"],[data-tone="2"],[data-tone="3"]){gap:2px!important;padding-block:8px!important}
+ html body #card:is([data-tone="1"],[data-tone="2"],[data-tone="3"]) > :is(.symbol,.eyebrow,.names,.ornament,.date,.info,.venue,.foot,.reception-focus){margin-block:1px!important}
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
