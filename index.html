@@ -2328,7 +2328,7 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
 })();
 </script><script id="auto-slide-every-three-seconds-v35">
 (function(){
- const regularMs=8000, readingMs=10000;
+ const regularMs=6000, readingMs=6000;
  const next=document.getElementById('next'),prev=document.getElementById('prev');
  const card=document.getElementById('card');
  if(!next||!card)return;
@@ -2345,7 +2345,7 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
    schedule(regularMs);
   },ms);
  }
- // Any intentional screen tap gives the current invitation a full 10 seconds.
+ // Keep each invitation on screen for six seconds, including after a tap.
  // The existing background-audio handler also attempts to unlock music on a tap.
  document.addEventListener('pointerdown',function(e){
   if(e.target.closest('#prev,#next'))return;
