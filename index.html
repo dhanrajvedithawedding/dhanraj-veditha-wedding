@@ -995,6 +995,20 @@ html body #card[data-tone="0"] .opening-couple img{
 /* Match the Ganapati treatment: clean transparent standalone 3D character artwork. */
 html body #card[data-tone="0"] .opening-couple{background:none!important;filter:drop-shadow(0 7px 12px rgba(0,0,0,.3)) drop-shadow(0 0 12px rgba(246,204,138,.28))!important}
 html body #card[data-tone="0"] .opening-couple img{mix-blend-mode:normal!important;filter:drop-shadow(0 4px 5px rgba(35,14,25,.32))!important;mask-image:none!important;-webkit-mask-image:none!important;object-fit:contain!important}
+</style><style id="clean-gold-couple-edges-v27">
+/* First invitation only: crisp cutout, champagne-gold outline, no white halo. */
+html body #card[data-tone="0"] .opening-couple{
+ filter:drop-shadow(1px 0 1px rgba(255,218,140,.95))
+ drop-shadow(-1px 0 1px rgba(255,218,140,.95))
+ drop-shadow(0 1px 1px rgba(255,218,140,.95))
+ drop-shadow(0 -1px 1px rgba(255,218,140,.95))
+ drop-shadow(0 0 7px rgba(247,192,101,.65))
+ drop-shadow(0 7px 11px rgba(22,9,21,.38))!important;
+}
+html body #card[data-tone="0"] .opening-couple img{
+ mix-blend-mode:normal!important;opacity:1!important;
+ filter:contrast(1.025) saturate(1.07)!important;
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -1182,7 +1196,7 @@ if(card){new MutationObserver(apply).observe(card,{childList:true});apply()}
      const c=document.createElement('canvas');c.width=w;c.height=h;
      const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(image,0,0);
      const data=x.getImageData(0,0,w,h),p=data.data,seen=new Uint8Array(w*h),stack=[];
-     function white(i){const k=i*4;return p[k]>224&&p[k+1]>224&&p[k+2]>224&&Math.max(p[k],p[k+1],p[k+2])-Math.min(p[k],p[k+1],p[k+2])<29}
+     function white(i){const k=i*4;return p[k]>206&&p[k+1]>206&&p[k+2]>206&&Math.max(p[k],p[k+1],p[k+2])-Math.min(p[k],p[k+1],p[k+2])<36}
      function seed(i){if(!seen[i]&&white(i)){seen[i]=1;stack.push(i)}}
      for(let i=0;i<w;i++){seed(i);seed((h-1)*w+i)}
      for(let j=0;j<h;j++){seed(j*w);seed(j*w+w-1)}
@@ -1202,7 +1216,7 @@ if(card){new MutationObserver(apply).observe(card,{childList:true});apply()}
       if(!((col>0&&seen[i-1])||(col<w-1&&seen[i+1])||(row>0&&seen[i-w])||(row<h-1&&seen[i+w])))continue;
       const k=i*4;
       const light=Math.min(p[k],p[k+1],p[k+2]);
-      if(light>190){const a=Math.max(.32,1-(light-190)/90);p[k+3]=Math.round(original[k+3]*a)}
+      if(light>155){const a=Math.max(.08,1-(light-155)/92);p[k+3]=Math.round(original[k+3]*a)}
      }
      x.putImageData(data,0,0);resolve(c.toDataURL('image/png'));
     }catch(e){resolve(src)}
