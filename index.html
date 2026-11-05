@@ -1897,4 +1897,56 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
  window.addEventListener('resize',()=>{if(active)resize()});
  reduced.addEventListener('change',sync);sync();
 })();
+</script><script id="mini-burgundy-champagne-starbursts-v56">
+(function(){
+ const card=document.getElementById('card');if(!card)return;
+ const canvas=document.createElement('canvas');canvas.id='miniWeddingStarbursts';
+ Object.assign(canvas.style,{position:'fixed',inset:'0',width:'100%',height:'100%',zIndex:'108',pointerEvents:'none'});
+ canvas.setAttribute('aria-hidden','true');document.body.appendChild(canvas);
+ const ctx=canvas.getContext('2d');if(!ctx)return;
+ const colors=['#ffe9b3','#f9d78e','#fff7e4','#e8b7a8','#d88ba3','#c17a99','#f6cfb8'];
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ let dots=[],active=false,raf=0,last=0,elapsed=0,burstCount=0;
+ function resize(){const d=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(innerWidth*d);canvas.height=Math.round(innerHeight*d);ctx.setTransform(d,0,0,d,0,0)}
+ function burst(){
+  const w=innerWidth,h=innerHeight;
+  const x=w*(.22+Math.random()*.56),y=h*(.23+Math.random()*.42);
+  for(let i=0;i<23;i++){
+   const a=i*Math.PI*2/23+Math.random()*.13,s=0.65+Math.random()*1.65;
+   dots.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,age:0,life:48+Math.random()*20,
+    color:colors[Math.floor(Math.random()*colors.length)],r:1.7+Math.random()*1.6,rot:Math.random()*6.28});
+  }
+ }
+ function star(x,y,r,rot,color,alpha){
+  ctx.save();ctx.translate(x,y);ctx.rotate(rot);ctx.globalAlpha=alpha;
+  ctx.fillStyle=color;ctx.shadowColor=color;ctx.shadowBlur=7;
+  ctx.beginPath();
+  for(let j=0;j<8;j++){
+   const a=-Math.PI/2+j*Math.PI/4,rr=j%2?r*.27:r;
+   if(j===0)ctx.moveTo(Math.cos(a)*rr,Math.sin(a)*rr);
+   else ctx.lineTo(Math.cos(a)*rr,Math.sin(a)*rr);
+  }
+  ctx.closePath();ctx.fill();ctx.restore();
+ }
+ function tick(t){
+  if(!active)return;
+  const dt=Math.min((t-last)/16.67||1,2);last=t;elapsed+=dt;
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+  // Three restrained miniature bursts per page visit, not continuous fireworks.
+  if(elapsed>=burstCount*115+18&&burstCount<3){burst();burstCount++}
+  for(let i=dots.length-1;i>=0;i--){
+   const p=dots[i];p.age+=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=.016*dt;
+   const alpha=Math.max(0,Math.min(1,(p.life-p.age)/23));
+   star(p.x,p.y,p.r,p.rot+p.age*.014,p.color,alpha);
+   if(p.age>=p.life)dots.splice(i,1);
+  }
+  ctx.globalAlpha=1;ctx.shadowBlur=0;raf=requestAnimationFrame(tick);
+ }
+ function stop(){active=false;cancelAnimationFrame(raf);dots=[];ctx.clearRect(0,0,innerWidth,innerHeight)}
+ function start(){stop();if(document.hidden||reduced.matches)return;resize();active=true;elapsed=0;burstCount=0;last=0;raf=requestAnimationFrame(tick)}
+ new MutationObserver(start).observe(card,{attributes:true,attributeFilter:['data-tone']});
+ document.addEventListener('visibilitychange',start);
+ window.addEventListener('resize',()=>{if(active)resize()});
+ reduced.addEventListener('change',start);start();
+})();
 </script></body></html>
