@@ -1780,6 +1780,16 @@ html body:has(#card:is([data-tone="0"],[data-tone="1"],[data-tone="2"],[data-ton
 html body:has(#card:is([data-tone="0"],[data-tone="1"],[data-tone="2"],[data-tone="3"])) .controls #next{opacity:0!important;visibility:visible!important;pointer-events:auto!important;width:24%!important;height:100%!important;min-width:0!important;cursor:pointer!important}
 html body:has(#card:is([data-tone="0"],[data-tone="1"],[data-tone="2"],[data-tone="3"])) .controls #sceneLabel{opacity:0!important}
 html body:has(#card:is([data-tone="0"],[data-tone="1"],[data-tone="2"],[data-tone="3"])) .music{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
+</style><style id="four-images-visible-foreground-fix-v9">
+/* Force uploaded full invitation artwork into the visible foreground. */
+html body:has(#card:is([data-tone="0"],[data-tone="1"],[data-tone="2"],[data-tone="3"]))::before{content:""!important;display:block!important;position:fixed!important;inset:0!important;z-index:30!important;pointer-events:none!important;background-repeat:no-repeat!important;background-position:center center!important;background-size:contain!important;background-color:#25080f!important;visibility:visible!important;opacity:1!important;animation:none!important;transform:none!important}
+html body:has(#card[data-tone="0"])::before{background-image:url("./F835C974-9438-42CF-81EE-6370B25E3B01.png")!important}
+html body:has(#card[data-tone="1"])::before{background-image:url("./DD3FE241-7B52-4121-AF9E-7FBF52811C33.png")!important}
+html body:has(#card[data-tone="2"])::before{background-image:url("./E5CEFDC9-452D-4FFD-994C-97DD32F6979A.png")!important}
+html body:has(#card[data-tone="3"])::before{background-image:url("./EEC0AF6C-30EF-4792-88B4-77178A7F641A.png")!important}
+html body .controls{z-index:101!important}
+html body .music{z-index:102!important}
+html body #celebrateTextSparkCanvas{z-index:117!important}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
