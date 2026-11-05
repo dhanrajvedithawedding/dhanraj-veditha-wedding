@@ -413,15 +413,49 @@ html body .stage .lamp,html body .stage .heli-overlay{display:none!important}
 #card:has(.reception-focus) .venue-map-link{display:inline-flex!important;width:23px!important;height:23px!important;min-width:23px!important;min-height:23px!important;padding:4px!important;margin:0!important;border:1px solid #dcb77d!important;border-radius:50%!important;vertical-align:middle!important;align-items:center!important;justify-content:center!important}
 #card:has(.reception-focus) .venue-map-link svg{display:block!important;width:13px!important;height:13px!important;max-width:13px!important;max-height:13px!important}
 @media(max-width:600px){#card:has(.reception-focus){font-size:clamp(11px,2.5vw,15px)!important}#card:has(.reception-focus) .wedding-blessing-plaque span{font-size:9px!important}}
+</style><style id="exact-reference-event-palettes-ornaments-v4">
+/* Event-specific textile-inspired paired colours based on supplied six-swatch reference. */
+
+html body .stage[data-ceremony="0"]{background:radial-gradient(ellipse at 48% 27%,#172a4d 0%,#08162e 72%,#070810 100%)!important}
+html body .stage[data-ceremony="0"] .card{background:linear-gradient(145deg,#601748 0%,#310d32 75%,#190c1a 100%)!important}
+
+html body .stage[data-ceremony="1"]{background:radial-gradient(ellipse at 48% 27%,#4a155c 0%,#210c37 72%,#070810 100%)!important}
+html body .stage[data-ceremony="1"] .card{background:linear-gradient(145deg,#8b164f 0%,#4b0734 75%,#190c1a 100%)!important}
+
+html body .stage[data-ceremony="2"]{background:radial-gradient(ellipse at 48% 27%,#0a5542 0%,#052b24 72%,#070810 100%)!important}
+html body .stage[data-ceremony="2"] .card{background:linear-gradient(145deg,#79172f 0%,#42091f 75%,#190c1a 100%)!important}
+
+html body .stage[data-ceremony="3"]{background:radial-gradient(ellipse at 48% 27%,#710c2e 0%,#350617 72%,#070810 100%)!important}
+html body .stage[data-ceremony="3"] .card{background:linear-gradient(145deg,#b45a5a 0%,#78313a 75%,#190c1a 100%)!important}
+
+html body .stage[data-ceremony="4"]{background:radial-gradient(ellipse at 48% 27%,#163b68 0%,#071c3d 72%,#070810 100%)!important}
+html body .stage[data-ceremony="4"] .card{background:linear-gradient(145deg,#863878 0%,#4b174f 75%,#190c1a 100%)!important}
+
+html body .stage[data-ceremony="5"]{background:radial-gradient(ellipse at 48% 27%,#664026 0%,#28170e 72%,#070810 100%)!important}
+html body .stage[data-ceremony="5"] .card{background:linear-gradient(145deg,#693071 0%,#32113c 75%,#190c1a 100%)!important}
+
+html body .stage .scene-ornament{position:absolute!important;bottom:8%!important;z-index:3!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;flex-direction:column!important;width:20%!important;height:16%!important;animation:ornamentBreathe 5s ease-in-out infinite alternate!important;transform:none!important;filter:drop-shadow(0 6px 8px #0009)!important}
+html body .stage .scene-ornament.left{left:5%!important;right:auto!important}
+html body .stage .scene-ornament.right{right:5%!important;left:auto!important;transform:none!important}
+html body .stage .scene-ornament .crest{font-family:Georgia,serif!important;font-size:clamp(32px,6vw,60px)!important;color:#f4d39b!important;text-shadow:0 -1px #fff0c7,0 3px #a76e35,0 7px 9px #0b0412!important}
+html body .stage .scene-ornament .gem{font-family:'Cinzel',Georgia,serif!important;letter-spacing:.08em!important;font-size:clamp(8px,1.15vw,12px)!important;color:#f1d39d!important;transform:none!important;direction:ltr!important;white-space:nowrap!important}
+html body .stage .scene-ornament .ornament-accent{font-size:clamp(12px,2vw,19px);color:#eac181;line-height:1.1}
+html body .stage .scene-ornament .stem{width:74%!important;height:10%!important;border-bottom:1px solid #e7bb76!important}
+@media(max-width:600px){html body .stage .scene-ornament{bottom:10%!important;width:21%!important;height:12%!important}html body .stage .scene-ornament.left{left:4%!important}html body .stage .scene-ornament.right{right:4%!important}html body .stage .scene-ornament .gem{font-size:8px!important;letter-spacing:0!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
-  ['❦','✦','BLESSINGS'],['♫','♬','MELODY'],['❀','✿','MEHNDI'],['❁','✧','AUSPICIOUS'],['♛','✦','CELEBRATION'],['✧','❦','FOREVER']
+  {label:'BLESSINGS',icon:'✿',accent:'❦'},
+  {label:'SANGEET',icon:'♫',accent:'♬'},
+  {label:'MEHNDI',icon:'❀',accent:'✿'},
+  {label:'WEDDING',icon:'❁',accent:'❦'},
+  {label:'RECEPTION',icon:'✾',accent:'✧'},
+  {label:'DHARWAD',icon:'♛',accent:'✦'}
  ];
  window.renderSceneOrnaments=function(){
   const i=typeof current==='number'?current:0,s=sets[i]||sets[0],holder=document.getElementById('sceneDecor');
   if(!holder)return;
-  holder.innerHTML=['left','right'].map((side,j)=>'<div class="scene-ornament '+side+'"><div class="crest">'+s[j]+'</div><div class="stem"></div><div class="gem">'+s[2]+'</div></div>').join('');
+  holder.innerHTML=['left','right'].map((side)=>'<div class="scene-ornament '+side+'"><div class="crest">'+s.icon+'</div><div class="stem"></div><div class="gem">'+s.label+'</div><div class="ornament-accent">'+s.accent+'</div></div>').join('');
  };
  const overlay=document.getElementById('heliOverlay'),shower=document.getElementById('heartShower');
  window.playLoveHelicopter=function(){
