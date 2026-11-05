@@ -1821,10 +1821,75 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
  }
  function stop(){active=false;cancelAnimationFrame(raf);particles=[];rockets=[];ctx.clearRect(0,0,innerWidth,innerHeight);document.body.classList.remove('celebrate-fireworks-active')}
  function sync(){
-  if((card.dataset.tone==='5'||card.dataset.tone==='0')&&!document.hidden&&!reduced.matches){
+  if(card.dataset.tone==='5'&&!document.hidden&&!reduced.matches){
    if(active)return;resize();active=true;frame=0;launches=0;last=0;
    document.body.classList.add('celebrate-fireworks-active');
    shoot(0);shoot(1);raf=requestAnimationFrame(tick);
+  }else stop();
+ }
+ new MutationObserver(sync).observe(card,{attributes:true,attributeFilter:['data-tone']});
+ document.addEventListener('visibilitychange',sync);
+ window.addEventListener('resize',()=>{if(active)resize()});
+ reduced.addEventListener('change',sync);sync();
+})();
+</script><script id="opening-confetti-cold-sparks-v54">
+(function(){
+ const card=document.getElementById('card');if(!card)return;
+ const canvas=document.createElement('canvas');canvas.id='openingConfettiColdSparks';
+ canvas.setAttribute('aria-hidden','true');
+ Object.assign(canvas.style,{position:'fixed',inset:'0',width:'100%',height:'100%',pointerEvents:'none',zIndex:'111',display:'none'});
+ document.body.appendChild(canvas);
+ const ctx=canvas.getContext('2d');if(!ctx)return;
+ const colors=['#ff3679','#ffb52b','#fff26d','#2ef5a2','#38d8ff','#7276ff','#ed60ff','#fff4d0'];
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+ let pieces=[],sparks=[],active=false,raf=0,frame=0,last=0;
+ function resize(){const d=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(innerWidth*d);canvas.height=Math.round(innerHeight*d);ctx.setTransform(d,0,0,d,0,0)}
+ function cannon(side){
+  const w=innerWidth,h=innerHeight,x=side===0?-8:w+8,y=h*.78;
+  for(let i=0;i<100;i++){
+   const angle=side===0?(-1.35+Math.random()*1.02):(-Math.PI+Math.random()*1.02);
+   const speed=6+Math.random()*10;
+   pieces.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed-3,
+    spin:Math.random()*6.28,spinSpeed:(Math.random()-.5)*.25,
+    width:3+Math.random()*5,height:6+Math.random()*8,
+    color:colors[Math.floor(Math.random()*colors.length)],life:125+Math.random()*85,age:0});
+  }
+ }
+ function fountain(side){
+  const w=innerWidth,h=innerHeight,x=side===0?w*.06:w*.94,y=h*.88;
+  for(let i=0;i<12;i++){
+   const angle=-Math.PI/2+(side===0?.22:-.22)+(Math.random()-.5)*.8;
+   const speed=6+Math.random()*8;
+   sparks.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,age:0,
+    life:22+Math.random()*29,size:.7+Math.random()*1.9,color:Math.random()>.24?'#fff5c9':'#ffdb72'});
+  }
+ }
+ function tick(t){
+  if(!active)return;
+  const dt=Math.min((t-last)/16.67||1,2);last=t;
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+  if(frame%65===0){cannon(0);cannon(1)}
+  if(frame%3===0){fountain(0);fountain(1)}
+  for(let i=pieces.length-1;i>=0;i--){
+   const p=pieces[i];p.age+=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=.11*dt;p.vx*=.994;p.spin+=p.spinSpeed*dt;
+   ctx.globalAlpha=Math.min(1,(p.life-p.age)/30);
+   ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.spin);ctx.fillStyle=p.color;
+   ctx.fillRect(-p.width/2,-p.height/2,p.width*Math.max(.18,Math.abs(Math.cos(p.spin))),p.height);ctx.restore();
+   if(p.age>=p.life||p.y>innerHeight+30)pieces.splice(i,1);
+  }
+  for(let i=sparks.length-1;i>=0;i--){
+   const p=sparks[i];p.age+=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=.25*dt;
+   ctx.globalAlpha=Math.max(0,1-p.age/p.life);ctx.fillStyle=p.color;ctx.shadowColor='#ffe9a6';ctx.shadowBlur=10;
+   ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();
+   if(p.age>=p.life)sparks.splice(i,1);
+  }
+  ctx.globalAlpha=1;ctx.shadowBlur=0;frame++;raf=requestAnimationFrame(tick);
+ }
+ function stop(){active=false;cancelAnimationFrame(raf);pieces=[];sparks=[];canvas.style.display='none';ctx.clearRect(0,0,innerWidth,innerHeight)}
+ function sync(){
+  if(card.dataset.tone==='0'&&!document.hidden&&!reduced.matches){
+   if(active)return;active=true;canvas.style.display='block';resize();frame=0;last=0;
+   cannon(0);cannon(1);raf=requestAnimationFrame(tick);
   }else stop();
  }
  new MutationObserver(sync).observe(card,{attributes:true,attributeFilter:['data-tone']});
