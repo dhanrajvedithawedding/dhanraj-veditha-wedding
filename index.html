@@ -2031,7 +2031,17 @@ function prepare(){
 const card=document.getElementById('card');
 if(card){new MutationObserver(()=>{clearTimeout(timer);active++;setTimeout(prepare,60)}).observe(card,{childList:true});setTimeout(prepare,300)}
 })();
-</script></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
+</script><style id="wedding-reception-details-gold-lettering-v1">
+/* 29 November wedding: gold text for reception time and venue, not black. */
+html body #card[data-tone="3"] .reception-focus .reception-details-bubble,
+html body #card[data-tone="3"] .reception-focus .reception-details-bubble .reception-time,
+html body #card[data-tone="3"] .reception-focus .reception-details-bubble .venue,
+html body #card[data-tone="3"] .reception-focus .reception-details-bubble .venue strong,
+html body #card[data-tone="3"] .reception-focus .reception-details-bubble .venue span{
+color:#ffe0a0!important;-webkit-text-fill-color:#ffe0a0!important;
+text-shadow:0 1px 2px rgba(54,16,31,.55)!important;
+}
+</style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
   {label:'BLESSINGS',icon:'✿',accent:'❦'},
