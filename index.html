@@ -1102,6 +1102,22 @@ html body .card-wrap{top:calc(48% - 12px)!important}
  font-family:Georgia,serif!important;font-size:clamp(11px,1.8vw,19px)!important;
  letter-spacing:.08em!important;white-space:nowrap!important;
 }
+</style><style id="celebrate-king-queen-crowns-v41">
+/* Celebrate only: matching royal crowns above each name, preserving ornamental base. */
+html body .stage[data-ceremony="5"] .scene-ornament.final-name-ornament .crest{
+ display:block!important;font-size:clamp(34px,6vw,62px)!important;
+ line-height:1.05!important;color:#f8dca2!important;
+ text-shadow:0 1px 1px #fff5d2,0 3px 1px #bd8740,0 5px 8px #210718,0 0 12px #e6ac64!important;
+}
+html body .stage[data-ceremony="5"] .scene-ornament.final-name-ornament .stem{
+ display:block!important;height:15%!important;
+}
+html body .stage[data-ceremony="5"] .scene-ornament.final-name-ornament .ornament-accent{
+ display:block!important;color:#f4d49b!important;
+}
+html body .stage[data-ceremony="5"] .scene-ornament.final-name-ornament{
+ height:19%!important;justify-content:flex-end!important;
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -1116,7 +1132,7 @@ html body .card-wrap{top:calc(48% - 12px)!important}
   const i=typeof current==='number'?current:0,s=sets[i]||sets[0],holder=document.getElementById('sceneDecor');
   if(!holder)return;
   if(i===5){
-   holder.innerHTML='<div class="scene-ornament left final-name-ornament"><div class="crest">♛</div><div class="stem"></div><div class="gem">DHANRAJ</div><div class="ornament-accent">✦</div></div><div class="scene-ornament right final-name-ornament"><div class="crest">♛</div><div class="stem"></div><div class="gem">VEDITHA</div><div class="ornament-accent">✦</div></div>';
+   holder.innerHTML='<div class="scene-ornament left final-name-ornament"><div class="crest">♛</div><div class="stem"></div><div class="gem">DHANRAJ</div><div class="ornament-accent">✦</div></div><div class="scene-ornament right final-name-ornament"><div class="crest">♕</div><div class="stem"></div><div class="gem">VEDITHA</div><div class="ornament-accent">✦</div></div>';
    return;
   }
   holder.innerHTML=['left','right'].map((side)=>'<div class="scene-ornament '+side+'"><div class="crest">'+s.icon+'</div><div class="stem"></div><div class="gem">'+s.label+'</div><div class="ornament-accent">'+s.accent+'</div></div>').join('');
