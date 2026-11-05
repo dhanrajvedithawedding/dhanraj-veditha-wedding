@@ -478,6 +478,23 @@ html body #card .info,html body #card .venue,html body #card .reception-focus{fo
 html body #card .foot{font-size:clamp(10px,1.35vw,13px)!important;margin:2px 0!important}
 @media(max-width:700px){html body .card-wrap{top:30.5%!important;width:78vw!important;height:42vh!important}html body #card{padding:8px 10px!important}html body #card .names{font-size:clamp(23px,6vw,39px)!important}html body #card .info,html body #card .venue,html body #card .reception-focus{font-size:clamp(11px,2.7vw,16px)!important}html body #card .date{font-size:clamp(12px,3vw,18px)!important}}
 @media(max-height:700px){html body .card-wrap{top:30%!important;height:42vh!important}html body #card{padding:5px 9px!important}}
+</style><style id="full-height-raised-invitation-panel">
+/* Raised, opaque invitation returns over the palace. Palace reveals during page transitions. */
+html body .card-wrap{position:fixed!important;inset:auto!important;left:50%!important;top:49%!important;transform:translate(-50%,-50%)!important;width:min(87vw,610px)!important;height:77vh!important;max-height:77vh!important;z-index:12!important;display:flex!important;align-items:center!important;justify-content:center!important;perspective:1400px!important}
+html body #card{width:100%!important;height:100%!important;min-height:0!important;max-height:100%!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;padding:clamp(12px,2.4vh,28px) clamp(14px,3.4vw,36px)!important;border:2px solid #f6d49b!important;border-radius:44% 44% 20px 20px/10% 10% 20px 20px!important;box-shadow:0 0 0 5px #925d35,0 0 0 8px #dfb578,0 24px 80px #10030be6,inset 0 0 70px #f9cb8733!important;overflow-y:auto!important;scrollbar-width:thin!important}
+html body #card[data-tone="0"]{background:linear-gradient(155deg,#60304ff9,#21142efc)!important}
+html body #card[data-tone="1"]{background:linear-gradient(155deg,#693a80fa,#261333fc)!important}
+html body #card[data-tone="2"]{background:linear-gradient(155deg,#335e49fa,#142d29fc)!important}
+html body #card[data-tone="3"]{background:linear-gradient(155deg,#84364bfa,#30121ffc)!important}
+html body #card[data-tone="4"]{background:linear-gradient(155deg,#344e7bfa,#171e3bfc)!important}
+html body #card[data-tone="5"]{background:linear-gradient(155deg,#79503efa,#2c2039fc)!important}
+html body #card .names{font-size:clamp(33px,6vw,66px)!important;line-height:1.08!important}
+html body #card .eyebrow{font-size:clamp(12px,1.8vw,17px)!important}
+html body #card .date{font-size:clamp(17px,2.4vw,25px)!important}
+html body #card .info,html body #card .venue,html body #card .reception-focus{font-size:clamp(15px,2.1vw,21px)!important;line-height:1.24!important}
+html body #card .symbol img{max-height:55px!important}
+@media(max-width:700px){html body .card-wrap{top:49%!important;width:85vw!important;height:76vh!important;max-height:76vh!important}html body #card{padding:12px 15px!important}html body #card .names{font-size:clamp(31px,8.4vw,49px)!important}html body #card .info,html body #card .venue,html body #card .reception-focus{font-size:clamp(14px,3.4vw,19px)!important}html body #card .date{font-size:clamp(16px,4vw,22px)!important}}
+@media(max-height:650px){html body .card-wrap{top:47%!important;height:74vh!important;max-height:74vh!important}html body #card{padding:8px 13px!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
