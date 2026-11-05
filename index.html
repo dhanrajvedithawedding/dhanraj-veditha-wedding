@@ -922,6 +922,37 @@ html body #premiumFrontStars .gold-flake{position:absolute;top:-12%;display:bloc
 html body #premiumGoldFlakes .heart,html body #premiumFrontStars .heart{display:none!important}
 html body .card-wrap{z-index:20!important}
 html body .brand,html body .controls,html body .music-btn{z-index:30!important}
+</style><style id="wedding-cloud-reception-nine-stars-v23">
+/* Only the 29 November Wedding card: soft luminous cloud-glass reception bubble. */
+html body #card[data-tone="3"] .reception-focus{
+ position:relative!important;isolation:isolate!important;
+ width:min(96%,520px)!important;
+ margin:clamp(4px,.7vh,9px) auto!important;
+ padding:clamp(10px,1.5vh,17px) clamp(12px,2.2vw,24px)!important;
+ border:1.5px solid rgba(255,241,203,.9)!important;
+ border-radius:42% 46% 40% 44% / 38% 43% 41% 39%!important;
+ background:radial-gradient(ellipse at 28% 12%,rgba(255,255,250,.49),transparent 42%),radial-gradient(ellipse at 78% 82%,rgba(255,222,165,.33),transparent 50%),linear-gradient(145deg,rgba(236,246,255,.31),rgba(191,210,225,.2) 52%,rgba(241,201,148,.24))!important;
+ box-shadow:inset 0 3px 15px rgba(255,255,255,.4),inset 0 -7px 20px rgba(157,185,210,.15),0 0 19px rgba(250,224,177,.35),0 8px 20px rgba(25,13,27,.25)!important;
+ backdrop-filter:blur(8px) saturate(130%)!important;
+ -webkit-backdrop-filter:blur(8px) saturate(130%)!important;
+ overflow:visible!important;
+ animation:weddingCloudFloat 6s ease-in-out infinite!important;
+}
+html body #card[data-tone="3"] .reception-focus::before,
+html body #card[data-tone="3"] .reception-focus::after{
+ content:'';position:absolute;z-index:-1;pointer-events:none;
+ background:radial-gradient(ellipse at 30% 25%,rgba(255,255,255,.4),rgba(218,233,246,.23) 55%,rgba(240,205,161,.13));
+ border:1px solid rgba(255,239,203,.52);
+ box-shadow:inset 0 2px 9px rgba(255,255,255,.36),0 0 11px rgba(255,230,181,.23);
+ border-radius:50%;
+}
+html body #card[data-tone="3"] .reception-focus::before{width:31%;height:56%;left:-5%;top:18%}
+html body #card[data-tone="3"] .reception-focus::after{width:29%;height:54%;right:-4%;top:23%}
+html body #card[data-tone="3"] .reception-focus strong,
+html body #card[data-tone="3"] .reception-focus .venue{position:relative;z-index:1;text-shadow:0 1px 3px rgba(49,20,36,.75),0 0 8px rgba(255,222,167,.25)!important}
+@keyframes weddingCloudFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@media(max-width:700px){html body #card[data-tone="3"] .reception-focus{width:94%!important;padding:9px 12px!important;border-radius:35% 38% 33% 36% / 26% 29% 27% 30%!important}}
+@media(prefers-reduced-motion:reduce){html body #card[data-tone="3"] .reception-focus{animation:none!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -1041,7 +1072,7 @@ function init(){
   e.style.setProperty('--delay',(-Math.random()*36).toFixed(2)+'s');
   back.appendChild(e);
  }
- for(let i=0;i<6;i++){
+ for(let i=0;i<9;i++){
   const e=document.createElement('span');e.className='gold-flake front-star';
   e.textContent=['✦','✧','✶'][i%3];
   e.style.left=(15+Math.random()*70).toFixed(2)+'%';
