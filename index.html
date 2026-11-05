@@ -1298,6 +1298,26 @@ html body #card[data-tone="3"] .wedding-blessing-plaque{
  html body #card[data-tone="3"]{gap:2px!important;padding:8px 10px!important}
  html body #card[data-tone="3"] .reception-focus > .venue{font-size:clamp(13px,3.1vw,19px)!important}
 }
+</style><style id="location-pins-heartbeat-except-wedding-v48">
+/* Gentle front-back heartbeat on location pins, except Kateel wedding venue. */
+html body #card .venue-map-link{
+ transform-origin:center center!important;
+ animation:locationPinHeartbeat 1.75s ease-in-out infinite!important;
+ will-change:transform!important;
+}
+html body #card[data-tone="3"] > .venue .venue-map-link{
+ animation:none!important;transform:none!important;will-change:auto!important;
+}
+@keyframes locationPinHeartbeat{
+ 0%,100%{transform:scale(1)}
+ 18%{transform:scale(1.14)}
+ 34%{transform:scale(.97)}
+ 52%{transform:scale(1.11)}
+ 72%{transform:scale(1)}
+}
+@media(prefers-reduced-motion:reduce){
+ html body #card .venue-map-link{animation:none!important;will-change:auto!important}
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
