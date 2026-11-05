@@ -1385,6 +1385,28 @@ html body #card[data-tone="3"] > .venue .venue-location-row{
 #celebrateRainbowFireworks{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:110;display:none}
 body.celebrate-fireworks-active #celebrateRainbowFireworks{display:block}
 @media(prefers-reduced-motion:reduce){#celebrateRainbowFireworks{display:none!important}}
+</style><style id="wedding-venue-size-hierarchy-v52">
+/* Wedding 29 November: smaller Kateel hall, more prominent Mulki reception venue. */
+html body #card[data-tone="3"] > .venue{
+ font-size:clamp(12px,2.55vw,18px)!important;
+ line-height:1.08!important;
+ letter-spacing:0!important;
+ max-width:100%!important;
+}
+html body #card[data-tone="3"] > .venue strong{
+ font-size:clamp(12px,2.5vw,17px)!important;
+}
+html body #card[data-tone="3"] .reception-focus > .venue{
+ font-size:clamp(18px,3.9vw,29px)!important;
+ line-height:1.12!important;
+ font-weight:600!important;
+ max-width:100%!important;
+ overflow-wrap:break-word!important;
+}
+@media(max-width:700px){
+ html body #card[data-tone="3"] > .venue{font-size:clamp(12px,2.7vw,16px)!important}
+ html body #card[data-tone="3"] .reception-focus > .venue{font-size:clamp(17px,4vw,24px)!important}
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -1774,7 +1796,7 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
  }
  function stop(){active=false;cancelAnimationFrame(raf);particles=[];rockets=[];ctx.clearRect(0,0,innerWidth,innerHeight);document.body.classList.remove('celebrate-fireworks-active')}
  function sync(){
-  if(card.dataset.tone==='5'&&!document.hidden&&!reduced.matches){
+  if((card.dataset.tone==='5'||card.dataset.tone==='0')&&!document.hidden&&!reduced.matches){
    if(active)return;resize();active=true;frame=0;launches=0;last=0;
    document.body.classList.add('celebrate-fireworks-active');
    shoot(0);shoot(1);raf=requestAnimationFrame(tick);
