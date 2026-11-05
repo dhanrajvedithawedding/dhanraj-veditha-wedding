@@ -1386,4 +1386,21 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
  music.title='Open or close the wedding song';
  music.setAttribute('aria-label','Open wedding song');
 })();
+</script><script id="auto-slide-every-three-seconds-v35">
+(function(){
+ const intervalMs=3000;
+ let nextTimer=null;
+ const next=document.getElementById('next');
+ if(!next)return;
+ function advance(){
+  // Reuse the existing slide transition and wrap around after the last page.
+  if(document.visibilityState!=='hidden'&&!document.querySelector('#card.exit')){
+   next.click();
+  }
+ }
+ function start(){stop();nextTimer=setInterval(advance,intervalMs)}
+ function stop(){if(nextTimer!==null){clearInterval(nextTimer);nextTimer=null}}
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start()});
+ start();
+})();
 </script></body></html>
