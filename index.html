@@ -914,6 +914,14 @@ html body #card[data-tone="3"] .reception-focus{margin-block:clamp(3px,.8vh,9px)
  html body #card:is([data-tone="1"],[data-tone="2"]) > .names{font-size:clamp(31px,7vw,50px)!important}
  html body #card:is([data-tone="1"],[data-tone="2"]) > :is(.date,.info,.venue){font-size:clamp(15px,3.5vw,19px)!important}
 }
+</style><style id="stars-only-six-front-v22">
+/* Keep all golden background stars below the invitation; six stars alone pass above it. */
+html body #premiumGoldFlakes{z-index:11!important}
+html body #premiumFrontStars{position:fixed!important;inset:0!important;width:100%!important;height:100%!important;z-index:25!important;pointer-events:none!important;overflow:hidden!important}
+html body #premiumFrontStars .gold-flake{position:absolute;top:-12%;display:block;line-height:1;white-space:nowrap;color:#ffe4a0;opacity:0;will-change:transform,opacity;filter:drop-shadow(0 0 4px #ffedba) drop-shadow(0 0 9px #dba24c);animation:premiumFlakeDown var(--duration,22s) linear var(--delay,0s) infinite!important}
+html body #premiumGoldFlakes .heart,html body #premiumFrontStars .heart{display:none!important}
+html body .card-wrap{z-index:20!important}
+html body .brand,html body .controls,html body .music-btn{z-index:30!important}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -1018,19 +1026,31 @@ if(card){new MutationObserver(attach).observe(card,{childList:true});attach()}
 <script id="gold-flakes-guaranteed-script">
 (function(){
 function init(){
-document.getElementById('premiumGoldFlakes')?.remove();
-const layer=document.createElement('div');layer.id='premiumGoldFlakes';layer.setAttribute('aria-hidden','true');
-for(let i=0;i<100;i++){
- const e=document.createElement('span'),heart=i%8===0;
- e.className='gold-flake'+(heart?' heart':'');
- e.textContent=heart?'♥':['✦','✧','✶','✦','⋆'][i%5];
- e.style.left=(Math.random()*100).toFixed(2)+'%';
- e.style.fontSize=(heart?11:9)+Math.random()*12+'px';
- e.style.setProperty('--duration',(17+Math.random()*17).toFixed(2)+'s');
- e.style.setProperty('--delay',(-Math.random()*34).toFixed(2)+'s');
- layer.appendChild(e);
-}
-document.body.appendChild(layer);
+ document.getElementById('premiumGoldFlakes')?.remove();
+ document.getElementById('premiumFrontStars')?.remove();
+ const back=document.createElement('div');back.id='premiumGoldFlakes';back.setAttribute('aria-hidden','true');
+ const front=document.createElement('div');front.id='premiumFrontStars';front.setAttribute('aria-hidden','true');
+ // All hearts removed. Exactly six golden stars are in front of the invitation;
+ // the remaining stars fall behind the invitation.
+ for(let i=0;i<94;i++){
+  const e=document.createElement('span');e.className='gold-flake';
+  e.textContent=['✦','✧','✶','⋆'][i%4];
+  e.style.left=(Math.random()*100).toFixed(2)+'%';
+  e.style.fontSize=(9+Math.random()*10).toFixed(1)+'px';
+  e.style.setProperty('--duration',(18+Math.random()*18).toFixed(2)+'s');
+  e.style.setProperty('--delay',(-Math.random()*36).toFixed(2)+'s');
+  back.appendChild(e);
+ }
+ for(let i=0;i<6;i++){
+  const e=document.createElement('span');e.className='gold-flake front-star';
+  e.textContent=['✦','✧','✶'][i%3];
+  e.style.left=(15+Math.random()*70).toFixed(2)+'%';
+  e.style.fontSize=(10+Math.random()*7).toFixed(1)+'px';
+  e.style.setProperty('--duration',(21+Math.random()*13).toFixed(2)+'s');
+  e.style.setProperty('--delay',(-Math.random()*32).toFixed(2)+'s');
+  front.appendChild(e);
+ }
+ document.body.append(back,front);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
