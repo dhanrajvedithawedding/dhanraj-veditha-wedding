@@ -617,6 +617,23 @@ html body .controls button{
  html body .controls span{min-width:145px!important;min-height:49px!important;padding:8px 12px!important}
  html body .controls button{width:49px!important;height:49px!important;min-width:49px!important}
 }
+</style><style id="lowered-floating-invitation-v3">
+/* Lower every invitation clear of the names bubble, with elegant raised depth. */
+html body .card-wrap{
+ position:fixed!important;left:50%!important;top:53%!important;
+ transform:translate(-50%,-50%)!important;
+ width:min(78vw,480px)!important;height:56vh!important;max-height:56vh!important;
+ z-index:30!important;perspective:1100px!important;
+}
+html body #card{
+ position:relative!important;transform:translateZ(0)!important;
+ border:1.5px solid #f5d6a0!important;
+ box-shadow:0 0 0 3px #92613b,0 0 0 5px rgba(246,215,155,.78),0 16px 22px rgba(13,3,12,.48),0 32px 58px rgba(11,2,14,.58),inset 0 2px 18px rgba(255,227,167,.15)!important;
+}
+html body #card[data-tone="1"]{box-shadow:0 0 0 3px #947447,0 0 0 5px #ead3a4,0 17px 26px #06141cbb,0 33px 60px #06141cb0,inset 0 2px 18px #d7b16b24!important}
+html body #card[data-tone="4"]{box-shadow:0 0 0 3px #99764b,0 0 0 5px #ead0a0,0 17px 26px #180c12bb,0 33px 60px #180c12b0,inset 0 2px 18px #d7ae7625!important}
+@media(max-width:700px){html body .card-wrap{top:53%!important;width:78vw!important;height:55vh!important;max-height:55vh!important}}
+@media(max-height:650px){html body .card-wrap{top:53%!important;height:54vh!important;max-height:54vh!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
