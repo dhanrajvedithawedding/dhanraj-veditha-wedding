@@ -739,6 +739,33 @@ html body #card[data-tone="3"] .reception-focus .venue{font-size:clamp(19px,2.65
 /* Dharwad reception page only: hide its location-pin icon, keep venue text. */
 html body #card[data-tone="4"] .venue-map-link,
 html body #card[data-tone="4"] .venue-location-row{display:none!important}
+</style><style id="compact-pages-and-letter-bubbles-v16">
+/* Preserve every bottom line on short and tall screens. */
+html body #card{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:space-evenly!important;gap:clamp(2px,.4vh,6px)!important;scrollbar-width:thin!important}
+html body #card > .foot{flex-shrink:0!important;max-width:100%!important;line-height:1.25!important;margin:2px auto 5px!important}
+html body #card > .eyebrow{flex-shrink:0!important}
+html body #card > .symbol{flex-shrink:0!important;margin:0!important}
+html body #card > .ornament{margin:0!important}
+html body #card > .date,html body #card > .info,html body #card > .venue{margin-block:2px!important}
+html body #card[data-tone="4"]{justify-content:center!important;gap:clamp(5px,1.4vh,16px)!important;padding-block:clamp(12px,2vh,22px)!important}
+html body #card[data-tone="4"] > .foot{margin-top:clamp(5px,1.5vh,15px)!important}
+@media(max-height:750px){
+ html body #card{gap:2px!important;padding:9px 12px!important}
+ html body #card .symbol img{max-height:48px!important}
+ html body #card > .names{line-height:1.04!important}
+ html body #card > .foot{font-size:clamp(11px,2.65vw,14px)!important}
+ html body #card[data-tone="4"]{gap:clamp(3px,.8vh,8px)!important}
+}
+html body #card .eyebrow.letter-bubble-heading{display:flex!important;justify-content:center!important;align-items:center!important;flex-wrap:wrap!important;gap:clamp(2px,.6vw,5px)!important;width:100%!important;letter-spacing:0!important;overflow:visible!important}
+html body #card .heading-letter{position:relative;display:inline-flex;align-items:center;justify-content:center;width:clamp(19px,3vw,29px);height:clamp(19px,3vw,29px);border-radius:50%;border:1px solid rgba(255,230,171,.88);background:radial-gradient(circle at 30% 20%,rgba(255,253,218,.5),rgba(224,168,79,.22) 35%,rgba(100,47,23,.18) 75%);box-shadow:inset 0 1px 4px rgba(255,251,224,.55),0 0 9px rgba(241,191,103,.35);font-family:Georgia,serif;font-size:clamp(11px,1.6vw,16px);font-weight:700;line-height:1;color:#fff0c5;animation:headingBubblePop .85s cubic-bezier(.2,1.6,.4,1) both;animation-delay:calc(var(--i)*75ms)}
+html body #card .heading-letter::after{content:'';position:absolute;width:22%;height:22%;border-radius:50%;background:#fff9d8;top:16%;left:22%;opacity:.8}
+html body #card .heading-gap{width:8px}
+@keyframes headingBubblePop{0%{transform:scale(.15) translateY(12px);opacity:0}60%{transform:scale(1.25) translateY(-3px);opacity:1}100%{transform:scale(1);opacity:1}}
+#headingBubbleFlight{position:fixed;inset:0;z-index:19;pointer-events:none;overflow:hidden}
+#headingBubbleFlight .rising-bubble{position:absolute;border:1px solid #ffdfa4;border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(255,255,228,.75),rgba(235,185,107,.24) 55%,transparent);box-shadow:0 0 8px #f5cf89;animation:headingBubbleRise 4.5s ease-out forwards}
+@keyframes headingBubbleRise{0%{transform:translate3d(0,0,0) scale(.55);opacity:0}12%{opacity:.95}55%{opacity:.75}100%{transform:translate3d(var(--drift),-190px,0) scale(1.25);opacity:0}}
+@media(max-width:700px){html body #card .heading-letter{width:clamp(18px,5vw,24px);height:clamp(18px,5vw,24px);font-size:clamp(11px,3vw,14px)}}
+@media(prefers-reduced-motion:reduce){html body #card .heading-letter{animation:none!important}#headingBubbleFlight{display:none!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -858,5 +885,48 @@ for(let i=0;i<100;i++){
 document.body.appendChild(layer);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script><script id="animated-heading-bubbles-v16">
+(function(){
+const layer=document.createElement('div');layer.id='headingBubbleFlight';layer.setAttribute('aria-hidden','true');document.body.appendChild(layer);
+let lastHeading='',lastTone='';
+function apply(){
+ const card=document.getElementById('card'),heading=card?.querySelector('.eyebrow');
+ if(!heading)return;
+ const tone=card.dataset.tone||'';
+ const raw=heading.textContent.trim();
+ if(heading.classList.contains('letter-bubble-heading'))return;
+ if(!['SANGEET','MEHNDI','WEDDING','RECEPTION'].includes(raw))return;
+ heading.classList.add('letter-bubble-heading');
+ heading.setAttribute('aria-label',raw);
+ heading.textContent='';
+ [...raw].forEach((letter,i)=>{
+  const el=document.createElement('span');
+  el.className=letter===' '?'heading-gap':'heading-letter';
+  if(letter!==' '){el.textContent=letter;el.style.setProperty('--i',i);el.setAttribute('aria-hidden','true')}
+  heading.appendChild(el);
+ });
+ if(raw!==lastHeading||tone!==lastTone){
+  lastHeading=raw;lastTone=tone;
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+   setTimeout(()=>{
+    if(!heading.isConnected)return;
+    const r=heading.getBoundingClientRect();
+    for(let i=0;i<13;i++){
+     const b=document.createElement('span');b.className='rising-bubble';
+     const size=6+Math.random()*12;
+     b.style.width=size+'px';b.style.height=size+'px';
+     b.style.left=(r.left+Math.random()*r.width)+'px';
+     b.style.top=(r.top+Math.random()*r.height)+'px';
+     b.style.setProperty('--drift',(Math.random()*100-50)+'px');
+     b.style.animationDelay=(Math.random()*.8)+'s';
+     layer.appendChild(b);b.addEventListener('animationend',()=>b.remove(),{once:true});
+    }
+   },600);
+  }
+ }
+}
+const card=document.getElementById('card');
+if(card){new MutationObserver(apply).observe(card,{childList:true});apply()}
 })();
 </script></body></html>
