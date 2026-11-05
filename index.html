@@ -1381,6 +1381,10 @@ html body #card[data-tone="3"] > .venue .venue-map-link,
 html body #card[data-tone="3"] > .venue .venue-location-row{
  display:none!important;
 }
+</style><style id="celebrate-rainbow-fireworks-v51">
+#celebrateRainbowFireworks{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:110;display:none}
+body.celebrate-fireworks-active #celebrateRainbowFireworks{display:block}
+@media(prefers-reduced-motion:reduce){#celebrateRainbowFireworks{display:none!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -1721,5 +1725,64 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
   document.addEventListener('touchstart',unlock,{once:true,passive:true});
   document.addEventListener('keydown',unlock,{once:true});
  });
+})();
+</script><script id="celebrate-rainbow-fireworks-script-v51">
+(function(){
+ const card=document.getElementById('card');if(!card)return;
+ const canvas=document.createElement('canvas');canvas.id='celebrateRainbowFireworks';
+ canvas.setAttribute('aria-hidden','true');document.body.append(canvas);
+ const ctx=canvas.getContext('2d');if(!ctx)return;
+ const palette=['#ff3e68','#ff9a30','#ffe65a','#55f28b','#33d9ff','#6b83ff','#d46aff'];
+ let particles=[],rockets=[],frame=0,raf=0,active=false,last=0,launches=0;
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+ function resize(){const d=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(innerWidth*d);canvas.height=Math.round(innerHeight*d);ctx.setTransform(d,0,0,d,0,0)}
+ function burst(x,y){
+  for(let i=0;i<72;i++){
+   const angle=(Math.PI*2*i/72)+Math.random()*.09,speed=1.4+Math.random()*3.8;
+   particles.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,
+    age:0,life:40+Math.random()*30,color:palette[(i+Math.floor(Math.random()*7))%7],size:1.3+Math.random()*2.2});
+  }
+ }
+ function shoot(side){
+  const w=innerWidth,h=innerHeight;
+  rockets.push({x:side===0?-12:w+12,y:h*(.74+Math.random()*.12),
+   tx:w*(.38+Math.random()*.24),ty:h*(.24+Math.random()*.3),
+   progress:0,color:palette[launches%palette.length]});
+  launches++;
+ }
+ function tick(t){
+  if(!active)return;
+  const dt=Math.min((t-last)/16.67||1,2);last=t;
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+  if(frame%43===0&&launches<18){shoot(0);shoot(1)}
+  for(let i=rockets.length-1;i>=0;i--){
+   const r=rockets[i];r.progress+=.035*dt;
+   const ease=1-Math.pow(1-Math.min(r.progress,1),2);
+   const x=r.x+(r.tx-r.x)*ease,y=r.y+(r.ty-r.y)*ease-30*Math.sin(Math.PI*ease);
+   ctx.beginPath();ctx.fillStyle=r.color;ctx.shadowColor=r.color;ctx.shadowBlur=13;ctx.arc(x,y,3.4,0,Math.PI*2);ctx.fill();
+   if(r.progress>=1){burst(x,y);rockets.splice(i,1)}
+  }
+  for(let i=particles.length-1;i>=0;i--){
+   const p=particles[i];p.age+=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=.048*dt;p.vx*=.994;
+   const opacity=Math.max(0,1-p.age/p.life);
+   ctx.globalAlpha=opacity;ctx.shadowBlur=8;ctx.shadowColor=p.color;ctx.fillStyle=p.color;
+   ctx.beginPath();ctx.arc(p.x,p.y,p.size*Math.max(.25,opacity),0,Math.PI*2);ctx.fill();
+   if(p.age>=p.life)particles.splice(i,1);
+  }
+  ctx.globalAlpha=1;ctx.shadowBlur=0;frame++;
+  raf=requestAnimationFrame(tick);
+ }
+ function stop(){active=false;cancelAnimationFrame(raf);particles=[];rockets=[];ctx.clearRect(0,0,innerWidth,innerHeight);document.body.classList.remove('celebrate-fireworks-active')}
+ function sync(){
+  if(card.dataset.tone==='5'&&!document.hidden&&!reduced.matches){
+   if(active)return;resize();active=true;frame=0;launches=0;last=0;
+   document.body.classList.add('celebrate-fireworks-active');
+   shoot(0);shoot(1);raf=requestAnimationFrame(tick);
+  }else stop();
+ }
+ new MutationObserver(sync).observe(card,{attributes:true,attributeFilter:['data-tone']});
+ document.addEventListener('visibilitychange',sync);
+ window.addEventListener('resize',()=>{if(active)resize()});
+ reduced.addEventListener('change',sync);sync();
 })();
 </script></body></html>
