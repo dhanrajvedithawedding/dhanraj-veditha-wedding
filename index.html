@@ -1047,6 +1047,41 @@ html body #card .symbol .ganapati-art{
  mask-image:radial-gradient(ellipse 69% 73% at 50% 50%,#000 64%,rgba(0,0,0,.95) 76%,transparent 100%)!important;
  filter:contrast(1.11) saturate(1.12) drop-shadow(0 5px 8px rgba(36,10,24,.35))!important;
 }
+</style><style id="wedding-burgundy-water-bubble-v33">
+/* Only the 29 November wedding page reception panel: burgundy glass-water bubble. */
+html body #card[data-tone="3"] .reception-focus{
+ position:relative!important;isolation:isolate!important;
+ border-radius:999px!important;
+ border:1.5px solid rgba(255,218,162,.84)!important;
+ background:radial-gradient(ellipse at 25% 12%,rgba(255,232,229,.29),transparent 36%),
+ radial-gradient(ellipse at 78% 88%,rgba(207,89,119,.25),transparent 50%),
+ linear-gradient(145deg,rgba(125,29,69,.83),rgba(76,15,48,.9) 55%,rgba(114,30,67,.85))!important;
+ box-shadow:inset 0 3px 11px rgba(255,222,222,.32),
+ inset 0 -7px 17px rgba(35,3,28,.47),
+ 0 0 0 2px rgba(255,207,149,.11),
+ 0 0 19px rgba(235,158,151,.23),
+ 0 8px 22px rgba(29,6,22,.4)!important;
+ backdrop-filter:blur(9px) saturate(135%)!important;
+ -webkit-backdrop-filter:blur(9px) saturate(135%)!important;
+ overflow:hidden!important;
+}
+html body #card[data-tone="3"] .reception-focus::before{
+ content:''!important;position:absolute!important;z-index:0!important;
+ left:8%!important;top:7%!important;width:53%!important;height:30%!important;
+ border:0!important;border-radius:50%!important;
+ background:linear-gradient(180deg,rgba(255,245,237,.28),transparent)!important;
+ box-shadow:none!important;transform:rotate(-9deg)!important;
+ pointer-events:none!important;
+}
+html body #card[data-tone="3"] .reception-focus::after{
+ content:''!important;position:absolute!important;z-index:0!important;
+ width:32%!important;height:24%!important;right:8%!important;bottom:9%!important;top:auto!important;
+ border:0!important;border-radius:50%!important;
+ background:radial-gradient(ellipse,rgba(255,190,184,.14),transparent 75%)!important;
+ box-shadow:none!important;pointer-events:none!important;
+}
+html body #card[data-tone="3"] .reception-focus :is(strong,.venue){position:relative!important;z-index:1!important;color:#ffebc1!important}
+@media(max-width:700px){html body #card[data-tone="3"] .reception-focus{border-radius:35px!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
