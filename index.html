@@ -535,6 +535,23 @@ html body #card[data-tone="0"] .foot{animation:welcomeFloatA 18s ease-in-out inf
 @media(max-width:700px){html body #card[data-tone="0"]{gap:clamp(3px,.9vh,10px)!important;padding:13px 12px!important}html body #card[data-tone="0"] .symbol img{max-height:clamp(40px,7vh,65px)!important}html body #card[data-tone="0"] .names{font-size:clamp(29px,8vw,49px)!important}html body #card[data-tone="0"] .info{font-size:clamp(13px,3.15vw,18px)!important}}
 @media(max-height:650px){html body #card[data-tone="0"]{gap:2px!important}html body #card[data-tone="0"] .symbol img{max-height:36px!important}}
 @media(prefers-reduced-motion:reduce){html body #card[data-tone="0"] :is(.symbol,.eyebrow,.names,.ornament,.date,.info,.foot){animation:none!important}}
+</style><style id="trial-premium-3d-gold-typography">
+/* Reversible trial: dimensional champagne-gold lettering, all six pages. */
+html body #card :is(.eyebrow,.names,.date,.info,.venue,.reception-focus,.foot,.ornament,.wedding-blessing-plaque){
+ color:#f9dfaa!important;
+ -webkit-text-stroke:.28px rgba(255,243,205,.7)!important;
+ text-shadow:0 1px 0 #fff7d8,0 2px 0 #e6bf77,0 3px 0 #c18c47,0 4px 0 #805026,0 5px 2px rgba(47,18,12,.72),0 9px 11px rgba(13,3,12,.55),0 -2px 9px rgba(255,229,167,.28)!important;
+}
+html body #card .names{
+ background:linear-gradient(180deg,#fff8df 4%,#ffe7ae 28%,#c28a40 48%,#fff0bf 64%,#d6a25b 82%,#fff1c9 100%);
+ -webkit-background-clip:text;background-clip:text;
+ -webkit-text-fill-color:transparent;
+ filter:drop-shadow(0 3px 1px rgba(56,24,13,.62)) drop-shadow(0 8px 9px rgba(18,5,14,.42));
+ -webkit-text-stroke:.4px rgba(255,229,163,.48)!important;
+ text-shadow:none!important;
+}
+html body #card :is(.info,.venue,.reception-focus){-webkit-text-stroke:.15px rgba(255,238,194,.35)!important;text-shadow:0 1px 0 #fbe9bb,0 2px 0 #a57438,0 3px 2px #402013,0 5px 8px rgba(0,0,0,.45)!important}
+@media(max-width:700px){html body #card :is(.info,.venue,.reception-focus){-webkit-text-stroke:0!important;text-shadow:0 1px 0 #cf9c59,0 2px 2px #3b1d13,0 4px 7px #100b17!important}}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
