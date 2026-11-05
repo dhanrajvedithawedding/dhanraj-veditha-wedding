@@ -1137,6 +1137,9 @@ html body #card[data-tone="5"] .opening-couple img{
  html body #card[data-tone="5"] .opening-couple,
  html body #card[data-tone="5"] .opening-couple img{animation:none!important}
 }
+</style><style id="invitation-reading-pause-hint-v43">
+html body #card{cursor:pointer}
+html body.invitation-reading-paused #sceneLabel::after{content:" · PAUSED";font-size:.7em;letter-spacing:.08em}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -1417,20 +1420,43 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
 })();
 </script><script id="auto-slide-every-three-seconds-v35">
 (function(){
- const intervalMs=5000;
- let nextTimer=null;
+ const intervalMs=10000;
  const next=document.getElementById('next');
- if(!next)return;
- function advance(){
-  // Reuse the existing slide transition and wrap around after the last page.
-  if(document.visibilityState!=='hidden'&&!document.querySelector('#card.exit')){
-   next.click();
-  }
+ const prev=document.getElementById('prev');
+ const card=document.getElementById('card');
+ if(!next||!card)return;
+ let timer=null,paused=false,down=false;
+ function stop(){if(timer!==null){clearTimeout(timer);timer=null}}
+ function schedule(){
+  stop();
+  if(paused||document.hidden)return;
+  timer=setTimeout(()=>{
+   timer=null;
+   if(!paused&&!document.hidden){
+    next.click();
+    schedule();
+   }
+  },intervalMs);
  }
- function start(){stop();nextTimer=setInterval(advance,intervalMs)}
- function stop(){if(nextTimer!==null){clearInterval(nextTimer);nextTimer=null}}
- document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start()});
- start();
+ function pause(){paused=true;stop();document.documentElement.classList.add('invitation-reading-paused')}
+ function resume(){paused=false;document.documentElement.classList.remove('invitation-reading-paused');schedule()}
+ // Touch or click the invitation itself to pause reading; a second tap resumes.
+ card.addEventListener('pointerdown',()=>{down=true},{passive:true});
+ card.addEventListener('pointerup',()=>{
+  if(!down)return;
+  down=false;
+  if(paused)resume();else pause();
+ });
+ card.addEventListener('pointercancel',()=>{down=false});
+ card.addEventListener('keydown',e=>{
+  if(e.key==='Enter'||e.key===' '){e.preventDefault();if(paused)resume();else pause()}
+ });
+ // Manual navigation is still available; after a manual swipe, give a full 10 seconds.
+ for(const btn of [next,prev]){
+  if(btn)btn.addEventListener('click',()=>{if(!paused)schedule()});
+ }
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else if(!paused)schedule()});
+ schedule();
 })();
 </script><script id="uploaded-wav-background-audio-v39">
 (function(){
