@@ -1440,6 +1440,58 @@ body.celebrate-grand-active #celebrateGrandMoment{display:block}
 #celebrateGrandMoment .grand-message span{background:linear-gradient(95deg,#e9b6ef,#fff0b3 34%,#c6f8bf 55%,#f3c0e2 78%,#ffe4a1);background-clip:text;-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 0 5px #ffe2b4)}
 @keyframes grandMessageReveal{0%{opacity:0;transform:translate(-50%,-50%) scale(.55);filter:blur(9px)}22%{opacity:1;transform:translate(-50%,-50%) scale(1.12);filter:blur(0)}38%,80%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.04)}}
 @media(prefers-reduced-motion:reduce){#celebrateGrandMoment{display:none!important}}
+</style><style id="celebrate-massive-reveal-v58">
+/* After the three-second blast, only the couple and three-line greeting remain inside the invitation. */
+html body #card[data-tone="5"].celebrate-reveal{
+ position:relative!important;overflow:hidden!important;
+ display:flex!important;flex-direction:column!important;
+ justify-content:center!important;align-items:center!important;
+}
+html body #card[data-tone="5"].celebrate-reveal > :not(.celebrate-final-scene){display:none!important}
+html body #card[data-tone="5"] .celebrate-final-scene{display:none}
+html body #card[data-tone="5"].celebrate-reveal .celebrate-final-scene{
+ display:flex!important;flex-direction:column!important;align-items:center!important;
+ justify-content:center!important;gap:clamp(10px,2.5vh,25px)!important;
+ width:100%;height:100%;min-height:0;padding:12px 8px;box-sizing:border-box;
+}
+html body #card[data-tone="5"] .celebrate-final-title{
+ text-align:center;font-family:"Cormorant Garamond",Georgia,serif;
+ font-size:clamp(34px,8.1vw,75px);line-height:1.02;font-weight:700;
+ letter-spacing:.055em;text-transform:uppercase;
+ background:linear-gradient(120deg,#e0a8ef,#fff0c2 31%,#a7f3b8 55%,#f2c0dc 78%,#ffdd96);
+ -webkit-background-clip:text;background-clip:text;color:transparent;
+ filter:drop-shadow(0 0 7px #e4a9a0);
+ text-shadow:0 3px 16px rgba(255,219,156,.27);
+ animation:celebrateTitleArrival 1.2s ease-out both;
+}
+html body #card[data-tone="5"] .celebrate-final-title span{display:block}
+html body #card[data-tone="5"] .celebrate-final-couple{
+ width:min(88%,370px);height:clamp(170px,37vh,380px);
+ display:flex;align-items:center;justify-content:center;
+ animation:celebrateCoupleDescend 3.6s cubic-bezier(.22,.75,.24,1) both;
+}
+html body #card[data-tone="5"] .celebrate-final-couple img{
+ display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 12px rgba(255,207,126,.35))
+}
+html body #celebrateGrandMoment .grand-message{display:none!important}
+@keyframes celebrateCoupleDescend{
+ 0%{opacity:0;transform:translateY(-85vh) scale(.84)}
+ 25%{opacity:1}
+ 75%{transform:translateY(10px) scale(1.02)}
+ 100%{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes celebrateTitleArrival{
+ from{opacity:0;transform:scale(.65);filter:blur(8px)}
+ to{opacity:1;transform:scale(1);filter:blur(0)}
+}
+@media(max-width:600px){
+ html body #card[data-tone="5"] .celebrate-final-title{font-size:clamp(30px,8vw,49px)}
+ html body #card[data-tone="5"] .celebrate-final-couple{height:clamp(160px,32vh,285px)}
+}
+@media(prefers-reduced-motion:reduce){
+ html body #card[data-tone="5"] .celebrate-final-couple,
+ html body #card[data-tone="5"] .celebrate-final-title{animation:none!important}
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
@@ -1971,10 +2023,10 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
  function resize(){const d=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(innerWidth*d);canvas.height=Math.round(innerHeight*d);ctx.setTransform(d,0,0,d,0,0)}
  function explode(){
   const x=innerWidth*.5,y=innerHeight*.255;
-  for(let i=0;i<235;i++){
-   const angle=Math.PI*2*i/235+Math.random()*.07,speed=1.7+Math.random()*7.3;
-   particles.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:75+Math.random()*72,age:0,
-    r:1.6+Math.random()*3.4,color:palette[i%palette.length],rotation:Math.random()*6.28});
+  for(let i=0;i<510;i++){
+   const angle=Math.PI*2*i/235+Math.random()*.07,speed=3.2+Math.random()*12.5;
+   particles.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:85+Math.random()*95,age:0,
+    r:2.2+Math.random()*4.3,color:palette[i%palette.length],rotation:Math.random()*6.28});
   }
  }
  function star(p,alpha){
@@ -2016,5 +2068,28 @@ if(root){new MutationObserver(apply).observe(root,{childList:true});apply()}
  document.addEventListener('visibilitychange',sync);
  window.addEventListener('resize',()=>{if(active)resize()});
  reduced.addEventListener('change',sync);sync();
+})();
+</script><script id="celebrate-massive-reveal-script-v58">
+(function(){
+ const card=document.getElementById('card');if(!card)return;
+ const markup='<div class="celebrate-final-scene"><div class="celebrate-final-title"><span>LET’S</span><span>CELEBRATE</span><span>TOGETHER</span></div><div class="celebrate-final-couple"><img src="0BDD46CF-F46C-4783-B4B2-D31E2CD16B35.png" alt="Dhanraj and Veditha"></div></div>';
+ let timer=null,armed=false;
+ function reset(){
+  clearTimeout(timer);timer=null;card.classList.remove('celebrate-reveal');
+  const old=card.querySelector('.celebrate-final-scene');if(old)old.remove();
+ }
+ function sync(){
+  const on=card.dataset.tone==='5'&&!document.hidden;
+  if(!on){armed=false;reset();return}
+  if(armed)return;
+  armed=true;reset();
+  timer=setTimeout(()=>{
+   if(card.dataset.tone!=='5'||document.hidden)return;
+   card.insertAdjacentHTML('beforeend',markup);
+   card.classList.add('celebrate-reveal');
+  },3000);
+ }
+ new MutationObserver(sync).observe(card,{attributes:true,attributeFilter:['data-tone']});
+ document.addEventListener('visibilitychange',sync);sync();
 })();
 </script></body></html>
