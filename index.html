@@ -1184,6 +1184,43 @@ html body #card[data-tone="3"] .reception-focus::after{
 @media(prefers-reduced-motion:reduce){
  html body #card[data-tone="3"] .reception-focus{animation:none!important}
 }
+</style><style id="wedding-reception-separate-title-bubble-v45">
+/* Wedding page only: distinct raised water-glass Reception heading, in Dhanraj's display font. */
+html body #card[data-tone="3"] .reception-focus{
+ display:flex!important;flex-direction:column!important;align-items:center!important;
+ gap:clamp(4px,.6vh,8px)!important;
+ padding:clamp(9px,1.2vh,15px) clamp(12px,2vw,20px)!important;
+ overflow:visible!important;
+}
+html body #card[data-tone="3"] .reception-focus > strong{
+ position:relative!important;z-index:2!important;
+ display:inline-block!important;width:max-content!important;max-width:94%!important;
+ padding:3px clamp(18px,4vw,36px) 5px!important;
+ margin:0 auto 2px!important;
+ border:1.5px solid rgba(255,232,193,.94)!important;
+ border-radius:999px!important;
+ background:radial-gradient(ellipse at 33% 8%,rgba(255,252,247,.46),transparent 58%),
+ linear-gradient(145deg,rgba(154,65,105,.95),rgba(78,19,57,.96) 62%,rgba(132,43,88,.96))!important;
+ box-shadow:inset 0 2px 5px rgba(255,255,242,.39),inset 0 -5px 9px rgba(35,4,28,.5),
+ 0 4px 10px rgba(23,0,18,.4),0 0 10px rgba(255,210,170,.3)!important;
+ font-family:"Cormorant Garamond",Georgia,serif!important;
+ font-size:clamp(24px,5.4vw,39px)!important;
+ font-style:normal!important;font-weight:600!important;line-height:1.05!important;
+ letter-spacing:.015em!important;color:#ffe2a6!important;
+ text-shadow:0 2px 2px rgba(35,3,20,.55),0 0 7px rgba(255,219,164,.3)!important;
+ animation:receptionTitleFloat 4s ease-in-out infinite!important;
+}
+html body #card[data-tone="3"] .reception-focus > .venue{
+ position:relative!important;z-index:1!important;
+ margin:0 auto!important;text-align:center!important;
+}
+@keyframes receptionTitleFloat{
+ 0%,100%{transform:translateY(0) scale(1)}
+ 50%{transform:translateY(-2px) scale(1.025)}
+}
+@media(prefers-reduced-motion:reduce){
+ html body #card[data-tone="3"] .reception-focus > strong{animation:none!important}
+}
 </style></head><body><svg id="elephant-white-key-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;overflow:hidden"><defs><filter id="elephant-white-key" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8" result="whiteRemoved"/></filter></defs></svg><div class="stage"><div class="arch"></div><div class="hanging left">❀ ❀</div><div class="hanging right">❀ ❀</div><div class="stars" id="stars"></div><div class="scene-decor" id="sceneDecor" aria-hidden="true"></div></div><div class="brand">DHANRAJ &amp; VEDITHA</div><button class="music" id="music" aria-label="Toggle music">♫</button><main class="card-wrap"><article class="card" id="card" aria-live="polite"></article></main><div class="controls"><button type="button" id="prev" aria-label="Previous invitation">‹</button><span id="sceneLabel">WEDDING INVITATION</span><button type="button" id="next" aria-label="Next invitation">›</button></div><script id="ceremony-decor-and-helicopter">
 (function(){
  const sets=[
